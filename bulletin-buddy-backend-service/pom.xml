@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -10,7 +11,7 @@
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>bulletin-buddy-test-frontend</artifactId>
+    <artifactId>bulletin-buddy-backend-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bulletin-board</name>
     <description></description>
@@ -49,6 +50,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
