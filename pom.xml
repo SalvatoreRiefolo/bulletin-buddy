@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>bulletin-buddy-test-backend-service</module>
-        <module>bulletin-buddy-test-frontend</module>
+        <module>bulletin-buddy-backend-service</module>
+        <module>bulletin-buddy-frontend</module>
     </modules>
 
     <properties>

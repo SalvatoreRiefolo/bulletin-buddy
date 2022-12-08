@@ -6,15 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bulletin-buddy-test-backend-service" />
-        <module name="bulletin-buddy-test-frontend" />
+        <module name="bulletin-buddy-backend-service" />
+        <module name="bulletin-buddy-frontend" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="bulletin-buddy-test-backend-service" options="-parameters" />
-      <module name="bulletin-buddy-test-frontend" options="-parameters" />
+      <module name="bulletin-buddy-backend-service" options="-parameters" />
+      <module name="bulletin-buddy-frontend" options="-parameters" />
     </option>
   </component>
 </project>
