@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private backendService: TestBackendCommunicationService) {
     this.testStrings = new Array<string>();
 
-    backendService.getTestComments().subscribe(data => this.testStrings = data);
+    this.backendService.getTestComments().subscribe(data => this.testStrings = data);
   }
 }
