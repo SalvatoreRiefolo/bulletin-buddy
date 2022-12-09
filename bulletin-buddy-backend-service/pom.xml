@@ -14,7 +14,6 @@
     <artifactId>bulletin-buddy-backend-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bulletin-board</name>
-    <description></description>
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
@@ -47,12 +46,6 @@
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
