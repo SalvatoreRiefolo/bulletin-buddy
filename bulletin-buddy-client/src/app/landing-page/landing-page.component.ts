@@ -8,7 +8,7 @@ import { TopOffersService } from '../top-offers.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private topOffersService :TopOffersService) { }
+  constructor(public topOffersService :TopOffersService) { }
 
   ngOnInit(): void {
   }
