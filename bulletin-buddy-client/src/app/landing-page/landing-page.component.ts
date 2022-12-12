@@ -11,10 +11,11 @@ export class LandingPageComponent implements OnInit {
 
   constructor(public topOffersService: TopOffersService, public appService: AppService) { }
 
-logout() : void{
-  this.appService.logout();
-}
-ngOnInit(): void {
-}
+  logout() : void{
+    this.appService.logout();
+  }
+
+  ngOnInit(): void {
+  }
 
 }

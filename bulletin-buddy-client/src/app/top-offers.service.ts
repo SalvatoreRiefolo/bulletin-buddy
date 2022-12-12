@@ -6,14 +6,19 @@ import { Offer } from './offer.model';
 })
 export class TopOffersService {
 
-  constructor() { }
+  body: string;
+
+  constructor() {
+    this.body = "Cras mattis justo ac posuere pellentesque. Vestibulum sed semper felis. Integer at leo congue, dignissim lacus ut, consectetur lectus.";
+  }
 
   getTopOffers(): Offer[] {
     // TODO: create TopOffers backend microservice and use it here
+
     let result : Offer[] = [];
-    result.push({title: "Offer1", description: "description1", userEmail: "userEmail1@a.b", commentThreadId: "1"});
-    result.push({title: "Offer2", description: "description2", userEmail: "userEmail2@a.b", commentThreadId: "2"});
-    result.push({title: "Offer3", description: "description3", userEmail: "userEmail3@a.b", commentThreadId: "3"});
+    result.push({title: "First offer", body: this.body, userEmail: "userEmail1@a.b", timestamp: new Date()});
+    result.push({title: "Second offer", body: this.body, userEmail: "userEmail2@a.b", timestamp: new Date()});
+    result.push({title: "Third offer", body: this.body, userEmail: "userEmail3@a.b", timestamp: new Date()});
     return result;
   }
 }

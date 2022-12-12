@@ -1,11 +1,14 @@
 package com.github.bulletinboard;
 
-import com.github.bulletinboard.services.CommentService;
+import com.github.bulletinboard.models.Offer;
+import com.github.bulletinboard.services.OfferService;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static com.github.bulletinboard.TestUtilities.createAnOffer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class BulletinBoardApplicationTests {
@@ -18,10 +21,10 @@ class BulletinBoardApplicationTests {
 	@ValueSource(ints = {0, 1, 3, 5, 10}) // six numbers
 	void commentService_GetAllComments_ShouldReturnCorrectNumberOfComments(int number){
 		// ARRANGE
-		CommentService commentService = TestUtilities.createCommentServiceWithMessageCount(number);
+		OfferService offerService = TestUtilities.createCommentServiceWithMessageCount(number);
 
 		// ACT
-		int commentCount = commentService.getAllComments().size();
+		int commentCount = offerService.getAllOffers().size();
 
 		//ASSERT
 		assertEquals(commentCount, number);
@@ -31,26 +34,27 @@ class BulletinBoardApplicationTests {
 	void commentService_removeAllComments_ShouldRemoveAllEntries(){
 		// ARRANGE
 		final int COMMENT_COUNT = 5;
-		CommentService commentService = TestUtilities.createCommentServiceWithMessageCount(COMMENT_COUNT);
+		OfferService offerService = TestUtilities.createCommentServiceWithMessageCount(COMMENT_COUNT);
 
 		// ACT
-		commentService.removeAllComments();
+		offerService.removeAllOffers();
 
 		// ASSERT
-		int commentCount = commentService.getAllComments().size();
+		int commentCount = offerService.getAllOffers().size();
 		assertEquals(commentCount, 0);
 	}
 
 	@Test
 	void commentService_addComment_ShouldAddOneComment(){
 		// ARRANGE
-		CommentService commentService = new CommentService();
+		OfferService offerService = new OfferService();
 
 		// ACT
-		commentService.addComment("new comment");
+		Offer offer = createAnOffer();
+		offerService.addOffer(offer);
 
 		// ASSERT
-		int commentCount = commentService.getAllComments().size();
+		int commentCount = offerService.getAllOffers().size();
 		assertEquals(commentCount, 1);
 	}
 }
