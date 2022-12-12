@@ -4,7 +4,7 @@ import { Offer } from './offer.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TopOffersService {
+export class OffersService {
 
   body: string;
 
@@ -19,6 +19,15 @@ export class TopOffersService {
     result.push({title: "First offer", body: this.body, userEmail: "userEmail1@a.b", timestamp: new Date()});
     result.push({title: "Second offer", body: this.body, userEmail: "userEmail2@a.b", timestamp: new Date()});
     result.push({title: "Third offer", body: this.body, userEmail: "userEmail3@a.b", timestamp: new Date()});
+    return result;
+  }
+  getOverviewOffers() : Offer[] {
+    let result : Offer[] = [];
+    result.push({title: "First offer", body: this.body, userEmail: "userEmail1@a.b", timestamp: new Date()});
+    result.push({title: "Second offer", body: this.body, userEmail: "userEmail2@a.b", timestamp: new Date()});
+    result.push({title: "Third offer", body: this.body, userEmail: "userEmail3@a.b", timestamp: new Date()});
+    result.push({title: "fourth offer", body: this.body, userEmail: "userEmail3@a.b", timestamp: new Date()});
+    result.push({title: "fifth offer", body: this.body, userEmail: "userEmail3@a.b", timestamp: new Date()});
     return result;
   }
 }

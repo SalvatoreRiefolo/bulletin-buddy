@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
-import { TopOffersService } from '../top-offers.service';
+import { AuthenticationService } from '../authentication.service';
+import { Offer } from '../offer.model';
+import { OffersService } from '../offers.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,12 +10,19 @@ import { TopOffersService } from '../top-offers.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(public topOffersService: TopOffersService, public appService: AppService) { }
-
-  logout() : void{
-    this.appService.logout();
+  constructor(private offersService: OffersService, private authenticationService: AuthenticationService) { }
+  
+  getTopOffers() : Offer[] {
+    return this.offersService.getTopOffers();
   }
 
+  isLoggedIn() : boolean {
+    return this.authenticationService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
+  }
   ngOnInit(): void {
   }
 
