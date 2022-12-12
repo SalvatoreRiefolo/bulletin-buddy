@@ -16,10 +16,5 @@
 
 }
 .login {
-    border: 4px solid transparent;
-    border-color: gray;
-    border-radius: 5px;
-    color: #95a39a;
+    padding: 10px 30px;
 }
-.login:hover {
-    background-color: gray; }
