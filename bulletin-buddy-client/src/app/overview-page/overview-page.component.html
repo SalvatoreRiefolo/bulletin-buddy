@@ -7,7 +7,7 @@
 <div class="container mt-5">
     <div class="container mx-5">
         <div class="row mr-5" *ngFor="let item of getOffers()">
-            <a routerLink="/" class="text-decoration-none">
+            <a routerLink="/offer/{{item.id}}" class="text-decoration-none">
                 <div class="col-10 text-white offer">
 
                     <h3>{{item.title}}</h3>

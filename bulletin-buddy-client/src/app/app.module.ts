@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
+import { DetailPageComponent } from './detail-page/detail-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
     LandingPageComponent,
     LoginPageComponent,
     OverviewPageComponent,
+    DetailPageComponent,
     LogoutPageComponent
   ],
   imports: [
