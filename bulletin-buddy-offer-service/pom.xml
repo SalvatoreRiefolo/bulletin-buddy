@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>bulletin-buddy-backend-service</artifactId>
+    <artifactId>bulletin-buddy-offer-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bulletin-board</name>
     <modelVersion>4.0.0</modelVersion>

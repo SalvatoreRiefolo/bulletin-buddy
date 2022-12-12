@@ -10,11 +10,13 @@ export class LoginPageComponent implements OnInit {
 
   public password: string;
   public email: string;
+
   constructor(private appService: AppService) { }
 
   login() {
     this.appService.login(this.password, this.email);
   }
+
   ngOnInit(): void {
   }
 

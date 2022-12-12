@@ -1,6 +1,6 @@
 export class Offer {
     public title: string;
-    public description: string;
+    public body: string;
     public userEmail: string;
-    public commentThreadId: string;
+    public timestamp: Date;
 }
