@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
 import { Offer } from '../offer.model';
 import { OffersService } from '../offers.service';
 
@@ -9,11 +10,13 @@ import { OffersService } from '../offers.service';
 })
 export class OverviewPageComponent implements OnInit {
 
-  constructor(private offersService : OffersService) { }
+  constructor(private offersService : OffersService, public authenticationService : AuthenticationService) { }
 
   getOffers() : Offer[] {
     return this.offersService.getOverviewOffers();
   }
+  
+
   ngOnInit(): void {
   }
 

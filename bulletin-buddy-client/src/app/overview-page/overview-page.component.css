@@ -1,0 +1,9 @@
+.offer {
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: dodgerblue;
+}
+.offer:hover {
+    background-color: rgb(132, 193, 255);
+
+}

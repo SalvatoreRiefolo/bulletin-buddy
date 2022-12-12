@@ -27,9 +27,15 @@
         <div class="col-4 text-center top-offer" *ngFor="let item of offersService.getTopOffers()">
 =======
         <div class="col-4 text-center top-offer" *ngFor="let item of getTopOffers()">
+<<<<<<< HEAD
 >>>>>>> increase encapsulation
             {{item.title}}
 >>>>>>> rename TopOffersService, add overview page component
+=======
+            <a routerLink="/" class="fill-div text-white"> <!-- TODO: Add link to the detail view of the coresponding offer -->
+                {{item.title}}
+            </a>
+>>>>>>> implement overview page
         </div>
     </div>
 </div>
