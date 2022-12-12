@@ -15,12 +15,12 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping()
-    public boolean addUser(@RequestBody User user) {
-        return authenticationService.addUser(user);
+    public boolean addUser(@RequestBody String name, @RequestBody String password) {
+        return authenticationService.addUser(new User(name, password));
     }
 
     @PostMapping()
-    public boolean authenticateUser(@RequestBody User user) {
-        return authenticationService.authenticateUser(user);
+    public boolean authenticateUser(@RequestBody String name, @RequestBody String password) {
+        return authenticationService.authenticateUser(name, password);
     }
 }

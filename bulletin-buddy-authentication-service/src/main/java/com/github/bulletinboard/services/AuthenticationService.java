@@ -19,12 +19,12 @@ public class AuthenticationService {
         return true;
     }
 
-    public boolean authenticateUser(User user) {
-        return users.stream().anyMatch(isRegistered(user));
+    public boolean authenticateUser(String name, String password) {
+        return users.stream().anyMatch(isRegistered(name, password));
     }
 
-    private static Predicate<User> isRegistered(User user) {
-        return u -> u.getName().equals(user.getName()) &&
-                    u.getPassword().equals(user.getPassword());
+    private static Predicate<User> isRegistered(String name, String password) {
+        return u -> u.getName().equals(name) &&
+                    u.getPassword().equals(password);
     }
 }
