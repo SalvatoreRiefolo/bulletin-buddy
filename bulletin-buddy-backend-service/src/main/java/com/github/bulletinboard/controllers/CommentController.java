@@ -18,6 +18,7 @@ public class CommentController {
     }
 
     @DeleteMapping()
+    @ResponseBody()
     public void deleteAllComments() {
         commentService.removeAllComments();
     }

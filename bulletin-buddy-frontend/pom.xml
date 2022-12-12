@@ -12,7 +12,7 @@
     <groupId>com.github</groupId>
     <artifactId>bulletin-buddy-frontend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bulletin-board</name>
+    <name>bulletin-buddy-frontend</name>
     <description></description>
     <modelVersion>4.0.0</modelVersion>
 

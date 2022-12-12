@@ -13,7 +13,7 @@
     <groupId>com.github</groupId>
     <artifactId>bulletin-buddy-backend-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bulletin-board</name>
+    <name>bulletin-buddy-comment-service</name>
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
