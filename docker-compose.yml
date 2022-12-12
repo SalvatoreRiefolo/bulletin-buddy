@@ -3,12 +3,16 @@ version: '3'
 # run maven install before building images
 
 services:
-  lecture-planner-employee:
-    image: alexx882/bulletin-buddy-test-backend-service
-    build: bulletin-buddy-test-backend-service
+  bulletin-buddy-frontend:
+    image: ase/bulletin-buddy-frontend
+    build: bulletin-buddy-frontend
+    ports:
+      - "8080:8080"
+    restart: on-failure # db might not be ready yet -> restart until it is
+
+  bulletin-buddy-comment-service:
+    image: ase/bulletin-offer-service
+    build: bulletin-buddy-offer-service
     ports:
       - "8081:8081"
     restart: on-failure # db might not be ready yet -> restart until it is
-
-
-
