@@ -5,23 +5,23 @@
     </div>
 </div>
 <div class="container">
-<div class="row ">
-    <div class="col-2"></div>
-    <div class="col-8">
-    <form #loginForm="ngForm">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-      <input type="email" id="emailAddress" class="form-control" [(ngModel)]="email"/>
-      <label class="form-label" for="emailAddress">Email address</label>
-    </div>
-  
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="password" class="form-control" [(ngModel)]="password"/>
-      <label class="form-label" for="password">Password</label>
-    </div>
-  
-    <!-- 2 column grid layout for inline styling
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form #loginForm="ngForm">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" id="emailAddress" name="emailAddress" class="form-control" [(ngModel)]="email" />
+                    <label class="form-label" for="emailAddress">Email address</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" />
+                    <label class="form-label" for="password">Password</label>
+                </div>
+
+                <!-- 2 column grid layout for inline styling
     <div class="row mb-4">
       <div class="col d-flex justify-content-center">
         <!-- Checkbox 
@@ -37,18 +37,19 @@
       </div>
     </div>
 -->
-    <!-- Submit button -->
-    <button type="submit" (click)="login()"
-    [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-4">Sign in</button>
-  
-    <!-- Register buttons 
+                <!-- Submit button -->
+                <a routerLink="/">
+                    <button type="submit" (click)="login()" [disabled]="loginForm.invalid"
+                        class="btn btn-primary btn-block mb-4">Sign in</button>
+                </a>
+                <!-- Register buttons 
     <div class="text-center">
       <p>Not a member? <a href="#!">Register</a></p>
     </div>
     -->
-  </form>
-  </div>
-  <div class="col-2"></div>
+            </form>
+        </div>
+        <div class="col-2"></div>
 
-  </div>
-  </div>
+    </div>
+</div>

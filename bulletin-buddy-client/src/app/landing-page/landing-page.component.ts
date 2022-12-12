@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 import { TopOffersService } from '../top-offers.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { TopOffersService } from '../top-offers.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(public topOffersService :TopOffersService) { }
+  constructor(public topOffersService: TopOffersService, public appService: AppService) { }
 
-  ngOnInit(): void {
-  }
+logout() : void{
+  this.appService.logout();
+}
+ngOnInit(): void {
+}
 
 }
