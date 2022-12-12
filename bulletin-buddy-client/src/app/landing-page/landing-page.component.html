@@ -17,7 +17,7 @@
     </div>
     <div class="row mt-5 px-5">
         <div class="col-4 text-center top-offer" *ngFor="let item of getTopOffers()">
-            <a routerLink="/" class="fill-div text-white">
+            <a routerLink="/offer/{{item.id}}" class="fill-div text-white">
                 <!-- TODO: Add link to the detail view of the coresponding offer -->
                 <h2>{{item.title}}</h2>
                 <div>{{item.timestamp.toLocaleString()}}</div>
