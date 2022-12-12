@@ -39,9 +39,14 @@
     <div class="container mx-5">
         <div class="row">
             <div class="col-3">
-                <a>
-                    <button class="btn btn-secondary">Add comment</button>
-                </a>
+                <form #addCommentForm="ngForm">
+                    Add comment: <input name="comment" id="comment" class="form-control input-lg" type="text" placeholder="Enter comment"
+                        [(ngModel)]="commentInput">
+                    <button type="submit" class="btn btn-secondary mt-1" (click)="addComment()"
+                        [disabled]="addCommentForm.invalid">Add comment</button>
+
+                </form>
+
             </div>
         </div>
     </div>
