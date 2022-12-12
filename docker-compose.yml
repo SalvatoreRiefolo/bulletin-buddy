@@ -11,8 +11,8 @@ services:
     restart: on-failure # db might not be ready yet -> restart until it is
 
   bulletin-buddy-comment-service:
-    image: ase/bulletin-comment-service
-    build: bulletin-buddy-backend-service
+    image: ase/bulletin-offer-service
+    build: bulletin-buddy-offer-service
     ports:
       - "8081:8081"
     restart: on-failure # db might not be ready yet -> restart until it is

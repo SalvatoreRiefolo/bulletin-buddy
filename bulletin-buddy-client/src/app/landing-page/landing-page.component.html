@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h1 class="display-3 text-center">BULLETIN BUDDY</h1>
+    <div class="container mt-5 px-5">
+        <div class="row vert-line-div"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5 px-5">
+        <div class="col-2"></div>
+        <div class="col-8 display-5 text-center login">
+            <a routerLink="/login"><button *ngIf="!(appService.isLoggedIn())" type="button"
+                    class="btn btn-secondary login">Login</button>
+                <button (click)="logout()" *ngIf="appService.isLoggedIn()" type="button"
+                    class="btn btn-secondary login">Logout</button></a>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row mt-5 px-5">
+        <div class="col-4 text-center top-offer" *ngFor="let item of topOffersService.getTopOffers()">
+          <h2>{{item.title}}</h2>
+          <div>{{item.timestamp.toLocaleString()}}</div>
+          <div class="top-offer-body">{{item.body}}</div>
+          <div>{{item.userEmail}}</div>
+        </div>
+    </div>
+</div>

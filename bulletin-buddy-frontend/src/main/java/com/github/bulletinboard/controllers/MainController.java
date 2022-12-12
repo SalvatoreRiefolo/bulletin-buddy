@@ -1,6 +1,6 @@
 package com.github.bulletinboard.controllers;
 
-import com.github.bulletinboard.services.CommentService;
+import com.github.bulletinboard.services.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +17,13 @@ public class MainController {
     public static final String ERROR = "error";
 
     @Autowired
-    private CommentService commentService;
+    private OfferService offerService;
 
     @GetMapping("/")
     public String main(Model model) {
         String[] comments;
         try {
-            comments = commentService.getComments();
+            comments = offerService.getOffers();
             model.addAttribute(ERROR, false);
         } catch (RestClientException e) {
             comments = new String[0];
@@ -36,7 +36,7 @@ public class MainController {
     @PostMapping("/comments")
     public RedirectView addComment(@RequestParam("pComment") String comment, Model model) {
         try {
-            commentService.addComment(comment);
+            offerService.addOffer(comment);
             model.addAttribute(ERROR, false);
         } catch (RestClientException e) {
             model.addAttribute(ERROR, true);
@@ -47,7 +47,7 @@ public class MainController {
     @DeleteMapping("/comments")
     public RedirectView deleteComments(Model model) {
         try {
-            commentService.deleteComments();
+            offerService.deleteOffers();
             model.addAttribute(ERROR, false);
         } catch (RestClientException e) {
             model.addAttribute(ERROR, true);

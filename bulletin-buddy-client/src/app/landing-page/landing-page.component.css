@@ -1,0 +1,25 @@
+.vert-line-div {
+    border-top: 1px solid #95a39a;
+}
+
+.top-offer {
+    background-color: dodgerblue;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 10px;
+    color: whitesmoke;
+}
+
+.top-offer-body {
+  padding: 2px;
+  margin: 1em;
+}
+
+.top-offer:hover {
+    background-color: rgb(132, 193, 255);
+
+}
+.login {
+    padding: 10px 30px;
+}

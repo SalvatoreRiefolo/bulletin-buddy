@@ -10,7 +10,7 @@
         <h1 class="page-title">Bulletin Buddy</h1>
 
         <div class="comments-input">
-            <form id="insertComment" action="/comments" method="post">
+            <form id="insertComment" action="/offers" method="post">
                 <label for="fComment">Your Comment:</label>
                 <br/>
                 <br/>
@@ -19,7 +19,7 @@
                 <br/>
                 <input type="submit" value="Add Comment">
             </form>
-            <form th:action="@{/comments}" th:method="delete" >
+            <form th:action="@{/offers}" th:method="delete" >
                 <button type="submit">
                     Clear
                 </button>

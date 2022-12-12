@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TestBackendCommunicationService } from './test-backend-communication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +6,6 @@ import { TestBackendCommunicationService } from './test-backend-communication.se
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bulletin-buddy-client';
-  testStrings: Array<string>;
-  constructor(private backendService: TestBackendCommunicationService) {
-    this.testStrings = new Array<string>();
-
-    this.backendService.getTestComments().subscribe(data => this.testStrings = data);
-  }
+  title = 'Bulletin buddy';
+  constructor(){}
 }
