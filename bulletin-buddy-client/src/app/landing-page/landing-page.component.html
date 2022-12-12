@@ -8,14 +8,15 @@
     <div class="row mt-5 px-5">
         <div class="col-2"></div>
         <div class="col-8 display-5 text-center login">
-            <a routerLink="/login"><button *ngIf="!(authenticationService.isLoggedIn())" type="button"
+            <a routerLink="/login"><button *ngIf="!(isLoggedIn())" type="button"
                     class="btn btn-secondary login">Login</button>
-                <button (click)="logout()" *ngIf="authenticationService.isLoggedIn()" type="button"
+                <button (click)="logout()" *ngIf="isLoggedIn()" type="button"
                     class="btn btn-secondary login">Logout</button></a>
         </div>
         <div class="col-2"></div>
     </div>
     <div class="row mt-5 px-5">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div class="col-4 text-center top-offer" *ngFor="let item of topOffersService.getTopOffers()">
           <h2>{{item.title}}</h2>
@@ -24,6 +25,9 @@
           <div>{{item.userEmail}}</div>
 =======
         <div class="col-4 text-center top-offer" *ngFor="let item of offersService.getTopOffers()">
+=======
+        <div class="col-4 text-center top-offer" *ngFor="let item of getTopOffers()">
+>>>>>>> increase encapsulation
             {{item.title}}
 >>>>>>> rename TopOffersService, add overview page component
         </div>
