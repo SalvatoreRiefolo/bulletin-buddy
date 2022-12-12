@@ -16,6 +16,34 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <p>Contact: <b>{{offer.userEmail}}</b></p>
-            </div>        </div>
+            </div>
+        </div>
+        <div class="container mt-5 px-5">
+            <div class="row vert-line-div"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div *ngFor="let item of comments">
+                    <div class="row text-center text-white bg-secondary mt-1">
+                        <div>{{item.text}}</div>
+                        <div>{{item.timestamp.toLocaleString()}}</div>
+                        <div>{{item.userEmail}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<div class="container mt-5" *ngIf="(authService.isLoggedIn())">
+    <div class="container mx-5">
+        <div class="row">
+            <div class="col-3">
+                <a>
+                    <button class="btn btn-secondary">Add comment</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mb-5"></div>

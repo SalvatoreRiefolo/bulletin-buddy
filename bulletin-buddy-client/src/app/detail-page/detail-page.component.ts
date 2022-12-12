@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { CommentsService } from '../comments.service';
+import { OfferComment } from '../offer-comment.model';
 import { Offer } from '../offer.model';
 import { OffersService } from '../offers.service';
 
@@ -10,9 +13,16 @@ import { OffersService } from '../offers.service';
 })
 export class DetailPageComponent implements OnInit {
   public offer: Offer;
-  constructor(private route: ActivatedRoute, private offersService: OffersService) {
+  public comments: OfferComment[];
+
+  constructor(
+    private route: ActivatedRoute,
+    private offersService: OffersService,
+    private commentsService: CommentsService,
+    public authService : AuthenticationService) {
     let id: string = this.route.snapshot.params['id'];
     this.offer = this.offersService.getOffer(id);
+    this.comments = this.commentsService.getComments(id);
   }
 
   ngOnInit(): void {
