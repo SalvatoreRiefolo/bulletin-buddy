@@ -16,11 +16,16 @@
         <div class="col-2"></div>
     </div>
     <div class="row mt-5 px-5">
+<<<<<<< HEAD
         <div class="col-4 text-center top-offer" *ngFor="let item of topOffersService.getTopOffers()">
           <h2>{{item.title}}</h2>
           <div>{{item.timestamp.toLocaleString()}}</div>
           <div class="top-offer-body">{{item.body}}</div>
           <div>{{item.userEmail}}</div>
+=======
+        <div class="col-4 text-center top-offer" *ngFor="let item of offersService.getTopOffers()">
+            {{item.title}}
+>>>>>>> rename TopOffersService, add overview page component
         </div>
     </div>
 </div>
