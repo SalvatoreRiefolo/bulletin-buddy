@@ -8,9 +8,9 @@
     <div class="row mt-5 px-5">
         <div class="col-2"></div>
         <div class="col-8 display-5 text-center login">
-            <a routerLink="/login"><button *ngIf="!(isLoggedIn())" type="button"
-                    class="btn btn-secondary login">Login</button>
-                <button (click)="logout()" *ngIf="isLoggedIn()" type="button"
+            <a routerLink="/login" *ngIf="!(isLoggedIn())"><button type="button"
+                    class="btn btn-secondary login">Login</button></a>
+            <a routerLink="/logout" *ngIf="isLoggedIn()"><button (click)="logout()" type="button"
                     class="btn btn-secondary login">Logout</button></a>
         </div>
         <div class="col-2"></div>
