@@ -17,7 +17,9 @@
     </div>
     <div class="row mt-5 px-5">
         <div class="col-4 text-center top-offer" *ngFor="let item of getTopOffers()">
-            {{item.title}}
+            <a routerLink="/" class="fill-div text-white"> <!-- TODO: Add link to the detail view of the coresponding offer -->
+                {{item.title}}
+            </a>
         </div>
     </div>
 </div>
