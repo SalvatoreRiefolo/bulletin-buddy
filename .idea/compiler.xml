@@ -9,6 +9,7 @@
         <module name="bulletin-buddy-frontend" />
         <module name="bulletin-buddy-offer-service" />
         <module name="bulletin-buddy-authentication-service" />
+        <module name="bulletin-buddy-comment-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
@@ -16,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bulletin-buddy-authentication-service" options="-parameters" />
+      <module name="bulletin-buddy-comment-service" options="-parameters" />
       <module name="bulletin-buddy-frontend" options="-parameters" />
       <module name="bulletin-buddy-offer-service" options="-parameters" />
     </option>

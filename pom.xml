@@ -12,6 +12,7 @@
         <module>bulletin-buddy-offer-service</module>
         <module>bulletin-buddy-frontend</module>
         <module>bulletin-buddy-authentication-service</module>
+        <module>bulletin-buddy-comment-service</module>
     </modules>
 
     <properties>
