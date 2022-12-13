@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h1 class="display-3 text-center">OVERVIEW</h1>
+    <div class="container mt-5 px-5">
+        <div class="row vert-line-div"></div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="container mx-5">
+        <div class="row mr-5" *ngFor="let item of getOffers()">
+            <a routerLink="/offer/{{item.id}}" class="text-decoration-none">
+                <div class="col-10 text-white offer">
+
+                    <h3>{{item.title}}</h3>
+                    <p>{{item.userEmail}}</p>
+                </div>
+            </a>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5" *ngIf="(authenticationService.isLoggedIn())">
+    <div class="container mx-5">
+        <div class="row">
+            <div class="col-3">
+                <a>
+                    <button class="btn btn-secondary">Add Offer</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
