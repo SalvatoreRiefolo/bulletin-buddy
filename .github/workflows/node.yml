@@ -11,6 +11,9 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: bulletin-buddy-client
 
     runs-on: ubuntu-latest
 
