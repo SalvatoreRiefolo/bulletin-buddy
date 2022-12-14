@@ -11,7 +11,7 @@ import static com.github.bulletinboard.TestUtilities.createAnOffer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class BulletinBoardApplicationTests {
+class OfferServiceTests {
 
 	@Test
 	void contextLoads() {
@@ -19,33 +19,33 @@ class BulletinBoardApplicationTests {
 
 	@ParameterizedTest
 	@ValueSource(ints = {0, 1, 3, 5, 10}) // six numbers
-	void commentService_GetAllComments_ShouldReturnCorrectNumberOfComments(int number){
+	void offerService_GetAllOffers_ShouldReturnCorrectNumberOfOffers(int number){
 		// ARRANGE
-		OfferService offerService = TestUtilities.createCommentServiceWithMessageCount(number);
+		OfferService offerService = TestUtilities.createOfferServiceWithMessageCount(number);
 
 		// ACT
-		int commentCount = offerService.getAllOffers().size();
+		int offerCount = offerService.getAllOffers().size();
 
 		//ASSERT
-		assertEquals(commentCount, number);
+		assertEquals(offerCount, number);
 	}
 
 	@Test
-	void commentService_removeAllComments_ShouldRemoveAllEntries(){
+	void offerService_removeAllOffers_ShouldRemoveAllEntries(){
 		// ARRANGE
-		final int COMMENT_COUNT = 5;
-		OfferService offerService = TestUtilities.createCommentServiceWithMessageCount(COMMENT_COUNT);
+		final int OFFER_COUNT = 5;
+		OfferService offerService = TestUtilities.createOfferServiceWithMessageCount(OFFER_COUNT);
 
 		// ACT
 		offerService.removeAllOffers();
 
 		// ASSERT
-		int commentCount = offerService.getAllOffers().size();
-		assertEquals(commentCount, 0);
+		int offerCount = offerService.getAllOffers().size();
+		assertEquals(offerCount, 0);
 	}
 
 	@Test
-	void commentService_addComment_ShouldAddOneComment(){
+	void offerService_addOffer_ShouldAddOneOffer(){
 		// ARRANGE
 		OfferService offerService = new OfferService();
 
@@ -54,7 +54,7 @@ class BulletinBoardApplicationTests {
 		offerService.addOffer(offer);
 
 		// ASSERT
-		int commentCount = offerService.getAllOffers().size();
-		assertEquals(commentCount, 1);
+		int offerCount = offerService.getAllOffers().size();
+		assertEquals(offerCount, 1);
 	}
 }
