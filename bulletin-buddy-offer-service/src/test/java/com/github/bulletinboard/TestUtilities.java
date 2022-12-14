@@ -5,7 +5,7 @@ import com.github.bulletinboard.services.OfferService;
 
 public class TestUtilities {
 
-    public static OfferService createCommentServiceWithMessageCount(int count){
+    public static OfferService createOfferServiceWithMessageCount(int count){
         OfferService offerService = new OfferService();
         for (int i = 0; i < count; i++){
             offerService.addOffer(createAnOffer());
