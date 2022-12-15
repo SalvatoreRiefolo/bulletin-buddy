@@ -4,10 +4,10 @@ version: '3'
 
 services:
   bulletin-buddy-frontend:
-    image: ase/bulletin-buddy-frontend
-    build: bulletin-buddy-frontend
+    image: ase/bulletin-buddy-client
+    build: bulletin-buddy-client
     ports:
-      - "8080:8080"
+      - "8080:80"
     restart: on-failure
 
   bulletin-buddy-offer-service:
@@ -17,16 +17,16 @@ services:
       - "8081:8081"
     restart: on-failure
 
-  bulletin-buddy-comment-service:
-    image: ase/bulletin-comment-service
-    build: bulletin-buddy-comment-service
+  bulletin-buddy-authentication-service:
+    image: ase/bulletin-authentication-service
+    build: bulletin-buddy-authentication-service
     ports:
       - "8082:8082"
     restart: on-failure
 
-  bulletin-buddy-authentication-service:
-    image: ase/bulletin-authentication-service
-    build: bulletin-buddy-authentication-service
+  bulletin-buddy-comment-service:
+    image: ase/bulletin-comment-service
+    build: bulletin-buddy-comment-service
     ports:
       - "8083:8083"
     restart: on-failure

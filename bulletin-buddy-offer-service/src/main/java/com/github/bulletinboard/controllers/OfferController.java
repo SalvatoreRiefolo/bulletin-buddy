@@ -24,7 +24,7 @@ public class OfferController {
     }
 
     @PostMapping()
-    public void addComment(@RequestBody Offer offer) {
+    public void addOffer(@RequestBody Offer offer) {
         offerService.addOffer(offer);
     }
 }

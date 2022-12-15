@@ -1,5 +1,7 @@
 package com.github.bulletinboard.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Offer {
@@ -7,7 +9,13 @@ public class Offer {
     private String title;
     private String body;
     private String publisherEmail;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date publishTimestamp;
+
+    public Offer() {
+        this.publishTimestamp = new Date();
+    }
 
     public Offer(String title, String body, String publisherEmail){
         this.title = title;

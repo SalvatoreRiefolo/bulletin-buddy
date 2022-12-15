@@ -19,10 +19,7 @@ public class CommentController {
     }
 
     @PostMapping()
-    public void addCommentToOffer(
-            @RequestBody UUID offerId,
-            @RequestBody String userEmail,
-            @RequestBody String comment) {
-        commentService.addComment(offerId, userEmail, comment);
+    public void addCommentToOffer(@RequestBody Comment comment) {
+        commentService.addComment(comment);
     }
 }
