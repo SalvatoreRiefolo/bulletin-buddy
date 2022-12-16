@@ -9,4 +9,5 @@ COPY . .
 RUN ng build
 
 FROM nginx as runtime
+EXPOSE 80
 COPY --from=build /app/dist/bulletin-buddy-client /usr/share/nginx/html

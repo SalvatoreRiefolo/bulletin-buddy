@@ -21,9 +21,10 @@ public class CommentService {
         return matches.toArray(Comment[]::new);
     }
 
-    public void addComment(UUID offerId, String userEmail, String comment){
+    public void addComment(Comment comment){
+        UUID offerId = comment.getOfferId();
         ArrayList<Comment> matches = comments.getOrDefault(offerId, new ArrayList<>());
-        matches.add(new Comment(comment, userEmail));
+        matches.add(comment);
         comments.put(offerId, matches);
     }
 }
