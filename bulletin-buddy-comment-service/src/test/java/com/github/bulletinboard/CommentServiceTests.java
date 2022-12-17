@@ -3,13 +3,11 @@ package com.github.bulletinboard;
 import com.github.bulletinboard.models.Comment;
 import com.github.bulletinboard.services.CommentService;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
 class CommentServiceTests {
 
 	@Test
