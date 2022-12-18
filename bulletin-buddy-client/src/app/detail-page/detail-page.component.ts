@@ -22,19 +22,24 @@ export class DetailPageComponent implements OnInit {
     private offersService: OffersService,
     private commentsService: CommentsService,
     public authService: AuthenticationService) {
+    this.comments = [];
     this.id = this.route.snapshot.params['id'];
     this.offer = this.offersService.getOffer(this.id);
-    this.comments = this.commentsService.getComments(this.id);
+    this.commentsService.getComments(this.id).subscribe((data: OfferComment[]) => {
+      console.log(data);
+      this.comments = data;
+    });
   }
   addComment() {
-    this.commentsService.addComment({
-      text: this.commentInput,
+    let date = new Date().toLocaleString("en-GB").replace('/', '-').replace('/', '-').replace(',', '');
+    let comment: OfferComment = {
+      content: this.commentInput,
       offerId: this.id,
-      userEmail: this.authService.getUserEmail(),
-      timestamp: new Date()
-    });
-    console.log(this.commentInput);
-    this.comments = this.commentsService.getComments(this.id);
+      posterEmail: this.authService.getUserEmail(),
+      timestamp: date.toString()
+    };
+
+    this.commentsService.addComment(comment).subscribe(hero => this.comments.push(comment));
   }
   ngOnInit(): void {
   }

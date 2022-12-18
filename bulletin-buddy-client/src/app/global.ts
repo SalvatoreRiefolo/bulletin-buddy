@@ -1,0 +1,1 @@
+export const commentServiceUrl='http://localhost:8083/';
