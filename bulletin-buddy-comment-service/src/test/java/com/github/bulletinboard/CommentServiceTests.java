@@ -17,6 +17,7 @@ class CommentServiceTests {
 	@Test
 	void commentService_AddComment_ShouldAddCorrectComment(){
 		// ARRANGE
+		UUID commentId = UUID.randomUUID();
 		UUID offerId = UUID.randomUUID();
 		String email = "myEmail@mail.com";
 		String content = "my comment";
@@ -24,7 +25,7 @@ class CommentServiceTests {
 		CommentService commentService = new CommentService();
 
 		// ACT
-		commentService.addComment(new Comment(offerId, content, email));
+		commentService.addComment(new Comment(commentId, offerId, content, email));
 
 		//ASSERT
 		Comment[] result = commentService.getCommentsByOfferId(offerId);
@@ -44,7 +45,7 @@ class CommentServiceTests {
 
 		// ACT
 		for (int i = 0; i < COMMENT_COUNT; i++){
-			commentService.addComment(new Comment(offerId, "email", "comment"));
+			commentService.addComment(new Comment(UUID.randomUUID(), offerId, "email", "comment"));
 		}
 
 		//ASSERT

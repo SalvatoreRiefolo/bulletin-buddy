@@ -10,16 +10,19 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "COMMENT")
 public class Comment {
-    @Column
+
+    @Column(name = "ID")
     @Id
+    private UUID commentId;
+    @Column(name = "OFFER_ID")
     private UUID offerId;
-    @Column
+    @Column(name = "CONTENT")
     private String content;
-    @Column
+    @Column(name = "POSTER_EMAIL")
     private String posterEmail;
-    @Column
+    @Column(name = "TIMESTAMP")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date timestamp;
 
@@ -27,7 +30,8 @@ public class Comment {
         this.timestamp = new Date();
     }
 
-    public Comment(UUID offerId, String content, String posterEmail) {
+    public Comment(UUID commentId, UUID offerId, String content, String posterEmail) {
+        this.commentId = commentId;
         this.offerId = offerId;
         this.content = content;
         this.posterEmail = posterEmail;
@@ -60,5 +64,13 @@ public class Comment {
 
     public void setOfferId(UUID offerId) {
         this.offerId = offerId;
+    }
+
+    public UUID getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(UUID commentId) {
+        this.commentId = commentId;
     }
 }

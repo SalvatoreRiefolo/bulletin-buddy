@@ -12,18 +12,6 @@ import java.util.UUID;
 @SpringBootApplication
 public class App {
 
-    @Autowired
-    private CommentRepository repository;
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void runAfterStartup() {
-        Comment comment = new Comment();
-        comment.setContent("Hello");
-        comment.setOfferId(UUID.randomUUID());
-        comment.setPosterEmail("test@test.com");
-        this.repository.save(comment);
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
