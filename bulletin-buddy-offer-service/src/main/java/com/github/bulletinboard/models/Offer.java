@@ -3,9 +3,10 @@ package com.github.bulletinboard.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Offer {
-
+    private UUID id;
     private String title;
     private String body;
     private String publisherEmail;
@@ -17,11 +18,20 @@ public class Offer {
         this.publishTimestamp = new Date();
     }
 
-    public Offer(String title, String body, String publisherEmail){
+    public Offer(UUID id, String title, String body, String publisherEmail) {
+        this.id = id;
         this.title = title;
         this.body = body;
         this.publisherEmail = publisherEmail;
         this.publishTimestamp = new Date();
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID offerId) {
+        this.id = offerId;
     }
 
     public String getTitle() {

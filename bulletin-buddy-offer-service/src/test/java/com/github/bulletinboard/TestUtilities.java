@@ -1,5 +1,7 @@
 package com.github.bulletinboard;
 
+import java.util.UUID;
+
 import com.github.bulletinboard.models.Offer;
 import com.github.bulletinboard.services.OfferService;
 
@@ -14,6 +16,6 @@ public class TestUtilities {
     }
 
     public static Offer createAnOffer(){
-        return new Offer("title sample", "body sample", "email@email.com");
+        return new Offer(new UUID(1, 2),"title sample", "body sample", "email@email.com");
     }
 }

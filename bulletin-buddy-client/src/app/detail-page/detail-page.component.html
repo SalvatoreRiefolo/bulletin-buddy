@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <p>Contact: <b>{{offer.userEmail}}</b></p>
+                <p>Contact: <b>{{offer.publisherEmail}}</b></p>
             </div>
         </div>
         <div class="container mt-5 px-5">
@@ -26,9 +26,9 @@
             <div class="col-8">
                 <div *ngFor="let item of comments">
                     <div class="row text-center text-white bg-secondary mt-1">
-                        <div>{{item.text}}</div>
+                        <div>{{item.content}}</div>
                         <div>{{item.timestamp.toLocaleString()}}</div>
-                        <div>{{item.userEmail}}</div>
+                        <div>{{item.posterEmail}}</div>
                     </div>
                 </div>
             </div>

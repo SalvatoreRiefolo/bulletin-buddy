@@ -1,6 +1,6 @@
 export class OfferComment {
-    public text: string;
-    public timestamp: Date;
-    public userEmail: string;
+    public content: string;
+    public timestamp: string;
+    public posterEmail: string;
     public offerId: string;
 }
