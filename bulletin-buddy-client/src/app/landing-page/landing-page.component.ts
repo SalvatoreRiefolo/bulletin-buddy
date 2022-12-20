@@ -9,14 +9,14 @@ import { OffersService } from '../offers.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-
-  constructor(private offersService: OffersService, private authenticationService: AuthenticationService) { }
-  
-  getTopOffers() : Offer[] {
-    return this.offersService.getTopOffers();
+  offers: Offer[] = [];
+  constructor(private offersService: OffersService, private authenticationService: AuthenticationService) {
+    this.offersService.getTopOffers().subscribe((data: Offer[]) => {
+      this.offers = data;
+    });
   }
 
-  isLoggedIn() : boolean {
+  isLoggedIn(): boolean {
     return this.authenticationService.isLoggedIn();
   }
 

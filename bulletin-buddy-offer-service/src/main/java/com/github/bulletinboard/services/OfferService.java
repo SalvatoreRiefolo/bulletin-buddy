@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OfferService {
@@ -20,5 +21,14 @@ public class OfferService {
 
     public void addOffer(Offer offer) {
         offers.add(offer);
+    }
+
+    public Offer getOfferById(UUID id) {
+        for(int i = 0; i < offers.size(); i++) {
+            if(offers.get(i).getId().equals(id)){
+                return offers.get(i);
+            }
+        }
+        return null;
     }
 }

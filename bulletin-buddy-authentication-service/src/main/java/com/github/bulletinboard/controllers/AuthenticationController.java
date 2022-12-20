@@ -18,7 +18,8 @@ public class AuthenticationController {
     }
 
     @GetMapping()
-    public boolean authenticateUser(@RequestBody User user) {
+    public boolean authenticateUser(@RequestParam("name") String name, @RequestParam("password") String password) {
+        User user = new User(name, password);
         System.out.println(user);
         return authenticationService.authenticateUser(user.getName(), user.getPassword());
     }
