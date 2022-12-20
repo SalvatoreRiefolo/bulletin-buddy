@@ -24,7 +24,9 @@ export class DetailPageComponent implements OnInit {
     public authService: AuthenticationService) {
     this.comments = [];
     this.id = this.route.snapshot.params['id'];
-    this.offer = this.offersService.getOffer(this.id);
+    this.offersService.getOffer(this.id).subscribe((data: Offer) => {
+      this.offer = data;
+    });
     this.commentsService.getComments(this.id).subscribe((data: OfferComment[]) => {
       console.log(data);
       this.comments = data;
@@ -39,7 +41,7 @@ export class DetailPageComponent implements OnInit {
       timestamp: date.toString()
     };
 
-    this.commentsService.addComment(comment).subscribe(hero => this.comments.push(comment));
+    this.commentsService.addComment(comment).subscribe(c => this.comments.push(comment));
   }
   ngOnInit(): void {
   }

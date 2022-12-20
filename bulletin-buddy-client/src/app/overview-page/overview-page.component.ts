@@ -9,13 +9,13 @@ import { OffersService } from '../offers.service';
   styleUrls: ['./overview-page.component.css']
 })
 export class OverviewPageComponent implements OnInit {
+  public offers: Offer[] = [];
 
-  constructor(private offersService : OffersService, public authenticationService : AuthenticationService) { }
-
-  getOffers() : Offer[] {
-    return this.offersService.getOverviewOffers();
+  constructor(private offersService: OffersService, public authenticationService: AuthenticationService) {
+    this.offersService.getOverviewOffers().subscribe((data: Offer[]) => {
+      this.offers = data;
+    });
   }
-  
 
   ngOnInit(): void {
   }

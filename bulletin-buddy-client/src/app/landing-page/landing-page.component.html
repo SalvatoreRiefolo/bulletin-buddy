@@ -16,13 +16,13 @@
         <div class="col-2"></div>
     </div>
     <div class="row mt-5 px-5">
-        <div class="col-4 text-center top-offer" *ngFor="let item of getTopOffers()">
+        <div class="col-4 text-center top-offer" *ngFor="let item of offers">
             <a routerLink="/offer/{{item.id}}" class="fill-div text-white">
                 <!-- TODO: Add link to the detail view of the coresponding offer -->
                 <h2>{{item.title}}</h2>
-                <div>{{item.timestamp.toLocaleString()}}</div>
+                <div>{{item.publishTimestamp}}</div>
                 <div class="top-offer-body">{{item.body}}</div>
-                <div>{{item.userEmail}}</div>
+                <div>{{item.publisherEmail}}</div>
             </a>
         </div>
     </div>
