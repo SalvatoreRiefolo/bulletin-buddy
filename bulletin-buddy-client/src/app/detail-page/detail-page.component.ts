@@ -22,6 +22,7 @@ export class DetailPageComponent implements OnInit {
     private offersService: OffersService,
     private commentsService: CommentsService,
     public authService: AuthenticationService) {
+    this.offer = new Offer();
     this.comments = [];
     this.id = this.route.snapshot.params['id'];
     this.offersService.getOffer(this.id).subscribe((data: Offer) => {
