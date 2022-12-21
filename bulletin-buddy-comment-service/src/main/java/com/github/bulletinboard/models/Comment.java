@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Comment {
-    private UUID offerId;
+    private UUID postId;
     private String content;
     private String posterEmail;
 
@@ -17,8 +17,8 @@ public class Comment {
         this.timestamp = new Date();
     }
 
-    public Comment(UUID offerId, String content, String posterEmail) {
-        this.offerId = offerId;
+    public Comment(UUID postId, String content, String posterEmail) {
+        this.postId = postId;
         this.content = content;
         this.posterEmail = posterEmail;
         this.timestamp = new Date();
@@ -44,11 +44,11 @@ public class Comment {
         return timestamp;
     }
 
-    public UUID getOfferId() {
-        return offerId;
+    public UUID getPostId() {
+        return postId;
     }
 
-    public void setOfferId(UUID offerId) {
-        this.offerId = offerId;
+    public void setPostId(UUID postId) {
+        this.postId = postId;
     }
 }
