@@ -9,6 +9,6 @@ export const ROUTES: Routes = [
     { path: '', component: LandingPageComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'overview', component: OverviewPageComponent },
-    { path: 'offer/:id', component: DetailPageComponent },
+    { path: 'post/:id', component: DetailPageComponent },
     { path: 'logout', component: LogoutPageComponent},
 ];

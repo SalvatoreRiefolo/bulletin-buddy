@@ -19,9 +19,9 @@ class PostServiceTests {
 
 	@ParameterizedTest
 	@ValueSource(ints = {0, 1, 3, 5, 10}) // six numbers
-	void offerService_GetAllOffers_ShouldReturnCorrectNumberOfOffers(int number){
+	void postService_GetAllPosts_ShouldReturnCorrectNumberOfPosts(int number){
 		// ARRANGE
-		PostService postService = TestUtilities.createOfferServiceWithMessageCount(number);
+		PostService postService = TestUtilities.createPostServiceWithMessageCount(number);
 
 		// ACT
 		int offerCount = postService.getAllPosts().size();
@@ -31,10 +31,10 @@ class PostServiceTests {
 	}
 
 	@Test
-	void offerService_removeAllOffers_ShouldRemoveAllEntries(){
+	void postService_removeAllPosts_ShouldRemoveAllEntries(){
 		// ARRANGE
-		final int OFFER_COUNT = 5;
-		PostService postService = TestUtilities.createOfferServiceWithMessageCount(OFFER_COUNT);
+		final int POST_COUNT = 5;
+		PostService postService = TestUtilities.createPostServiceWithMessageCount(POST_COUNT);
 
 		// ACT
 		postService.removeAllPosts();
@@ -45,7 +45,7 @@ class PostServiceTests {
 	}
 
 	@Test
-	void offerService_addOffer_ShouldAddOneOffer(){
+	void postService_addOffer_ShouldAddOneOffer(){
 		// ARRANGE
 		PostService postService = new PostService();
 

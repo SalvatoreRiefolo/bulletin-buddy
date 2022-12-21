@@ -7,7 +7,7 @@ import com.github.bulletinboard.services.PostService;
 
 public class TestUtilities {
 
-    public static PostService createOfferServiceWithMessageCount(int count){
+    public static PostService createPostServiceWithMessageCount(int count){
         PostService postService = new PostService();
         for (int i = 0; i < count; i++){
             postService.addPost(createAnOffer());

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OfferComment } from './offer-comment.model';
+import { PostComment } from './post-comment.model';
 import { commentServiceUrl } from './global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,9 +10,9 @@ export class CommentsService {
 
   constructor(private http: HttpClient) { }
   getComments(id: string) {
-    return this.http.get<OfferComment[]>(commentServiceUrl + 'comments/' + id);
+    return this.http.get<PostComment[]>(commentServiceUrl + 'comments/' + id);
   }
-  addComment(comment: OfferComment) {
+  addComment(comment: PostComment) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // maybe needed for future: 'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'
@@ -20,7 +20,7 @@ export class CommentsService {
     const options = {
       headers
     };
-    return this.http.post<OfferComment>(commentServiceUrl + 'comments/', comment, options);
+    return this.http.post<PostComment>(commentServiceUrl + 'comments/', comment, options);
 
   }
 }

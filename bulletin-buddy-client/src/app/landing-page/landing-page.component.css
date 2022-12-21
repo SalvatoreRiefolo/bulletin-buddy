@@ -1,4 +1,4 @@
-.top-offer {
+.top-post {
     background-color: dodgerblue;
     box-sizing: border-box;
     border: 3px solid transparent;
@@ -7,12 +7,12 @@
     color: whitesmoke;
 }
 
-.top-offer-body {
+.top-post-body {
   padding: 2px;
   margin: 1em;
 }
 
-.top-offer:hover {
+.top-post:hover {
     background-color: rgb(132, 193, 255);
 
 }

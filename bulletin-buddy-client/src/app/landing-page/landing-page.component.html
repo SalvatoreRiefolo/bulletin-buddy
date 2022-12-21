@@ -16,7 +16,7 @@
         <div class="col-2"></div>
     </div>
     <div class="row mt-5 px-5">
-        <div class="col-4 text-center top-post" *ngFor="let item of offers">
+        <div class="col-4 text-center top-post" *ngFor="let item of posts">
             <a routerLink="/post/{{item.id}}" class="fill-div text-white">
                 <!-- TODO: Add link to the detail view of the coresponding post -->
                 <h2>{{item.title}}</h2>
