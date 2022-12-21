@@ -25,14 +25,16 @@ public class Post {
 
     public Post() {
         this.publishTimestamp = new Date();
+        this.type = PostType.REQUEST; // per default post is request
     }
 
-    public Post(UUID id, String title, String body, String publisherEmail) {
+    public Post(UUID id, String title, String body, String publisherEmail, PostType type) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.publisherEmail = publisherEmail;
         this.publishTimestamp = new Date();
+        this.type = type;
     }
 
     public UUID getId() {
