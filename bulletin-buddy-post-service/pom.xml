@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.github</groupId>
-    <artifactId>bulletin-buddy-offer-service</artifactId>
+    <artifactId>bulletin-buddy-post-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bulletin-buddy-offer-service</name>
+    <name>bulletin-buddy-post-service</name>
     <modelVersion>4.0.0</modelVersion>
 
     <properties>

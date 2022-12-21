@@ -1,7 +1,7 @@
 package com.github.bulletinboard;
 
-import com.github.bulletinboard.models.Offer;
-import com.github.bulletinboard.services.OfferService;
+import com.github.bulletinboard.models.Post;
+import com.github.bulletinboard.services.PostService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,7 +11,7 @@ import static com.github.bulletinboard.TestUtilities.createAnOffer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class OfferServiceTests {
+class PostServiceTests {
 
 	@Test
 	void contextLoads() {
@@ -21,10 +21,10 @@ class OfferServiceTests {
 	@ValueSource(ints = {0, 1, 3, 5, 10}) // six numbers
 	void offerService_GetAllOffers_ShouldReturnCorrectNumberOfOffers(int number){
 		// ARRANGE
-		OfferService offerService = TestUtilities.createOfferServiceWithMessageCount(number);
+		PostService postService = TestUtilities.createOfferServiceWithMessageCount(number);
 
 		// ACT
-		int offerCount = offerService.getAllOffers().size();
+		int offerCount = postService.getAllPosts().size();
 
 		//ASSERT
 		assertEquals(offerCount, number);
@@ -34,27 +34,27 @@ class OfferServiceTests {
 	void offerService_removeAllOffers_ShouldRemoveAllEntries(){
 		// ARRANGE
 		final int OFFER_COUNT = 5;
-		OfferService offerService = TestUtilities.createOfferServiceWithMessageCount(OFFER_COUNT);
+		PostService postService = TestUtilities.createOfferServiceWithMessageCount(OFFER_COUNT);
 
 		// ACT
-		offerService.removeAllOffers();
+		postService.removeAllPosts();
 
 		// ASSERT
-		int offerCount = offerService.getAllOffers().size();
+		int offerCount = postService.getAllPosts().size();
 		assertEquals(offerCount, 0);
 	}
 
 	@Test
 	void offerService_addOffer_ShouldAddOneOffer(){
 		// ARRANGE
-		OfferService offerService = new OfferService();
+		PostService postService = new PostService();
 
 		// ACT
-		Offer offer = createAnOffer();
-		offerService.addOffer(offer);
+		Post post = createAnOffer();
+		postService.addPost(post);
 
 		// ASSERT
-		int offerCount = offerService.getAllOffers().size();
+		int offerCount = postService.getAllPosts().size();
 		assertEquals(offerCount, 1);
 	}
 }

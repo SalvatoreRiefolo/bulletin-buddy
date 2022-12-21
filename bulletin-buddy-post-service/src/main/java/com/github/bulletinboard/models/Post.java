@@ -5,20 +5,29 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Offer {
+public class Post {
     private UUID id;
     private String title;
     private String body;
     private String publisherEmail;
 
+    // add Enumerated
+    private PostType type;
+
+    // can be extended to other types of posts in future
+    public enum PostType
+    {
+        OFFER, REQUEST
+    }
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date publishTimestamp;
 
-    public Offer() {
+    public Post() {
         this.publishTimestamp = new Date();
     }
 
-    public Offer(UUID id, String title, String body, String publisherEmail) {
+    public Post(UUID id, String title, String body, String publisherEmail) {
         this.id = id;
         this.title = title;
         this.body = body;
