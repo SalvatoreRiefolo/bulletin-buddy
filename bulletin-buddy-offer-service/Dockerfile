@@ -14,6 +14,6 @@ RUN mvn package
 FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
-COPY --from=maven /app/target/bulletin-buddy-comment-service-0.0.1-SNAPSHOT.jar /app
+COPY --from=maven /app/target/bulletin-buddy-offer-service-0.0.1-SNAPSHOT.jar /app
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]
