@@ -15,8 +15,10 @@ export class OffersService {
   }
 
   getTopOffers() {
+    console.log(offerServiceUrl)
     return this.http.get<Offer[]>(offerServiceUrl + 'offers/');
   }
+
   getOverviewOffers() {
     return this.http.get<Offer[]>(offerServiceUrl + 'offers/');
 
