@@ -13,7 +13,6 @@ RUN ng build
 
 FROM nginx as runtime
 
-ENV OFFER_URL='localhost:8081'
 EXPOSE 80
 
 COPY --from=build /app/dist/bulletin-buddy-client /usr/share/nginx/html
