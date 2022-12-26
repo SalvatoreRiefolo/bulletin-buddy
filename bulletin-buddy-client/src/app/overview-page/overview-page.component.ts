@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { Offer } from '../offer.model';
-import { OffersService } from '../offers.service';
+import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-overview-page',
@@ -9,11 +9,11 @@ import { OffersService } from '../offers.service';
   styleUrls: ['./overview-page.component.css']
 })
 export class OverviewPageComponent implements OnInit {
-  public offers: Offer[] = [];
+  public posts: Post[] = [];
 
-  constructor(private offersService: OffersService, public authenticationService: AuthenticationService) {
-    this.offersService.getOverviewOffers().subscribe((data: Offer[]) => {
-      this.offers = data;
+  constructor(private postsService: PostsService, public authenticationService: AuthenticationService) {
+    this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
+      this.posts = data;
     });
   }
 
