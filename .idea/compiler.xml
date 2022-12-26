@@ -21,7 +21,7 @@
       <module name="bulletin-buddy-authentication-service" options="-parameters" />
       <module name="bulletin-buddy-comment-service" options="-parameters" />
       <module name="bulletin-buddy-frontend" options="-parameters" />
-      <module name="bulletin-buddy-offer-service" options="-parameters" />
+      <module name="bulletin-buddy-offer-service" options="" />
     </option>
   </component>
 </project>
