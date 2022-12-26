@@ -1,6 +1,6 @@
-export class OfferComment {
+export class PostComment {
     public content: string;
     public timestamp: string;
     public posterEmail: string;
-    public offerId: string;
+    public postId: string;
 }

@@ -14,12 +14,12 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/{id}")
-    public Comment[] getCommentsByOfferId(@PathVariable("id") UUID offerId) {
-        return commentService.getCommentsByOfferId(offerId);
+    public Comment[] getCommentsByPostId(@PathVariable("id") UUID postId) {
+        return commentService.getCommentsByPostId(postId);
     }
 
     @PostMapping()
-    public void addCommentToOffer(@RequestBody Comment comment) {
+    public void addCommentToPost(@RequestBody Comment comment) {
         commentService.addComment(comment);
     }
 }

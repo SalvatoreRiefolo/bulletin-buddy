@@ -6,8 +6,7 @@
     <file url="file://$PROJECT_DIR$/bulletin-buddy-comment-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bulletin-buddy-comment-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bulletin-buddy-frontend/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bulletin-buddy-offer-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bulletin-buddy-offer-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletin-buddy-post-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

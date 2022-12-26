@@ -7,21 +7,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bulletin-buddy-frontend" />
-        <module name="bulletin-buddy-offer-service" />
         <module name="bulletin-buddy-authentication-service" />
         <module name="bulletin-buddy-comment-service" />
+        <module name="bulletin-buddy-post-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17">
-      <module name="bulletin-buddy-backend-service" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bulletin-buddy-authentication-service" options="-parameters" />
       <module name="bulletin-buddy-comment-service" options="-parameters" />
       <module name="bulletin-buddy-frontend" options="-parameters" />
-      <module name="bulletin-buddy-offer-service" options="" />
+      <module name="bulletin-buddy-post-service" options="-parameters" />
     </option>
   </component>
 </project>

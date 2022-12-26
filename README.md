@@ -8,4 +8,4 @@
     
 2. Use Thymeleaf to show the result on the frontend
     - Define a basic layout to show a list of offers/comments
-    - Input fields to add offer / remove (by using offer id?)
+    - Input fields to add post / remove (by using post id?)

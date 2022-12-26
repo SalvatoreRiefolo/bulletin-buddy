@@ -19,17 +19,17 @@ class CommentServiceTests {
 	@Test
 	void commentService_AddComment_ShouldAddCorrectComment(){
 		// ARRANGE
-		UUID offerId = UUID.randomUUID();
+		UUID postId = UUID.randomUUID();
 		String email = "myEmail@mail.com";
 		String content = "my comment";
 
 		CommentService commentService = new CommentService();
 
 		// ACT
-		commentService.addComment(new Comment(offerId, content, email));
+		commentService.addComment(new Comment(postId, content, email));
 
 		//ASSERT
-		Comment[] result = commentService.getCommentsByOfferId(offerId);
+		Comment[] result = commentService.getCommentsByPostId(postId);
 		assertEquals(result.length, 1);
 
 		Comment comment = result[0];
@@ -41,16 +41,16 @@ class CommentServiceTests {
 	void commentService_AddComment_ShouldAddMultipleCommentsWithSameIdCorrectly(){
 		// ARRANGE
 		final int COMMENT_COUNT = 5;
-		UUID offerId = UUID.randomUUID();
+		UUID postId = UUID.randomUUID();
 		CommentService commentService = new CommentService();
 
 		// ACT
 		for (int i = 0; i < COMMENT_COUNT; i++){
-			commentService.addComment(new Comment(offerId, "email", "comment"));
+			commentService.addComment(new Comment(postId, "email", "comment"));
 		}
 
 		//ASSERT
-		Comment[] result = commentService.getCommentsByOfferId(offerId);
+		Comment[] result = commentService.getCommentsByPostId(postId);
 		assertEquals(result.length, COMMENT_COUNT);
 	}
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { Offer } from '../offer.model';
-import { OffersService } from '../offers.service';
+import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,10 +9,10 @@ import { OffersService } from '../offers.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  offers: Offer[] = [];
-  constructor(private offersService: OffersService, private authenticationService: AuthenticationService) {
-    this.offersService.getTopOffers().subscribe((data: Offer[]) => {
-      this.offers = data;
+  posts: Post[] = [];
+  constructor(private postsService: PostsService, private authenticationService: AuthenticationService) {
+    this.postsService.getTopPosts().subscribe((data: Post[]) => {
+      this.posts = data;
     });
   }
 

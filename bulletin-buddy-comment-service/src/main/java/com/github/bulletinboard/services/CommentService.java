@@ -16,15 +16,15 @@ public class CommentService {
         this.comments = new HashMap<>();
     }
 
-    public Comment[] getCommentsByOfferId(UUID offerId){
-        List<Comment> matches = comments.getOrDefault(offerId, new ArrayList<>());
+    public Comment[] getCommentsByPostId(UUID postId){
+        List<Comment> matches = comments.getOrDefault(postId, new ArrayList<>());
         return matches.toArray(Comment[]::new);
     }
 
     public void addComment(Comment comment){
-        UUID offerId = comment.getOfferId();
-        ArrayList<Comment> matches = comments.getOrDefault(offerId, new ArrayList<>());
+        UUID postId = comment.getPostId();
+        ArrayList<Comment> matches = comments.getOrDefault(postId, new ArrayList<>());
         matches.add(comment);
-        comments.put(offerId, matches);
+        comments.put(postId, matches);
     }
 }
