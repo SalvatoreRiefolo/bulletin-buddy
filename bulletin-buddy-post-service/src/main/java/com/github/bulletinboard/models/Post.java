@@ -72,4 +72,12 @@ public class Post {
     public Date getPublishTimestamp() {
         return publishTimestamp;
     }
+
+    public PostType getType() {
+        return type;
+    }
+
+    public void setType(PostType type) {
+        this.type = type;
+    }
 }
