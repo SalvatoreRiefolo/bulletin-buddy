@@ -5,7 +5,7 @@ RUN npm install -g @angular/cli
 
 ENV OFFER_URL='localhost:8081'
 
-COPY ./package.json .
+COPY package.json .
 RUN npm install
 
 COPY . .
