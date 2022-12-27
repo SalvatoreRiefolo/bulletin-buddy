@@ -11,6 +11,7 @@ export class AuthenticationService {
   private email = "";
 
   constructor(private http: HttpClient) { }
+
   login(passwd: string, email: string) {
     return this.http.get<boolean>(authenticationServiceUrl + `authentication?name=${email}&passwd=${passwd}`)
       .subscribe((login: boolean) => {

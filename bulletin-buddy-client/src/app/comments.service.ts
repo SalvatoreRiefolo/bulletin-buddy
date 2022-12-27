@@ -20,7 +20,7 @@ export class CommentsService {
     const options = {
       headers
     };
-    return this.http.post<PostComment>(commentServiceUrl + 'comments/', comment, options);
+    return this.http.post<PostComment>(commentServiceUrl + 'comments', comment, options);
 
   }
 }

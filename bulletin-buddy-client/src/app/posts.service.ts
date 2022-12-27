@@ -15,11 +15,10 @@ export class PostsService {
   }
 
   getTopPosts() {
-    return this.http.get<Post[]>(postServiceUrl + 'posts/');
+    return this.http.get<Post[]>(postServiceUrl + 'posts');
   }
   getOverviewPosts() {
-    return this.http.get<Post[]>(postServiceUrl + 'posts/');
-
+    return this.http.get<Post[]>(postServiceUrl + 'posts');
   }
 
   getPost(id: string) {

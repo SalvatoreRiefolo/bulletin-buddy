@@ -8,8 +8,10 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  public password: string;
-  public email: string;
+  // prefill form with data for configured test user to make dev easier
+  // later to be removed
+  public password: string = 'test';
+  public email: string = 'test@test.com';
   constructor(private authenticationService: AuthenticationService) { }
 
   login() {
