@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/comments")
-@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:8084"})
 public class CommentController {
     @Autowired
     private CommentService commentService;

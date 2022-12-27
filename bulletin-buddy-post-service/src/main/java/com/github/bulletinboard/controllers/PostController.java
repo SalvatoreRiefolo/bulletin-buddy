@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class PostController {
     @Autowired
     private PostService postService;
