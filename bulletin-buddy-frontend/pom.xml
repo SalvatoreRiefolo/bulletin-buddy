@@ -11,7 +11,7 @@
 
     <groupId>com.github</groupId>
     <artifactId>bulletin-buddy-frontend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>bulletin-buddy-frontend</name>
     <description></description>
     <modelVersion>4.0.0</modelVersion>
