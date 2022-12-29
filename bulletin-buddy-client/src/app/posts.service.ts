@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { postServiceUrl } from './global';
 import { Post } from './post.model';
@@ -22,6 +22,18 @@ export class PostsService {
   }
 
   getPost(id: string) {
-       return this.http.get<Post>(postServiceUrl + 'posts/' + id);
+    return this.http.get<Post>(postServiceUrl + 'posts/' + id);
+  }
+
+  addPost(post: Post) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // maybe needed for future: 'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'
+    });
+    const options = {
+      headers
+    };
+    return this.http.post<Post>(postServiceUrl + 'posts', post, options);
+
   }
 }

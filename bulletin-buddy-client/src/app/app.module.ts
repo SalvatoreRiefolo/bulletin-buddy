@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import { AddOfferPageComponent } from './add-offer-page/add-offer-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
     LoginPageComponent,
     OverviewPageComponent,
     DetailPageComponent,
-    LogoutPageComponent
+    LogoutPageComponent,
+    AddOfferPageComponent
   ],
   imports: [
     BrowserModule,

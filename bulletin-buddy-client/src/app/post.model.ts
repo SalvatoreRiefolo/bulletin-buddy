@@ -11,3 +11,9 @@ export enum PostType
   OFFER,
   REQUEST,
 };
+
+export const PostType2LabelMapping: Record<string, PostType> = {
+  ["OFFER"]: PostType.OFFER,
+  ["REQUEST"]: PostType.REQUEST
+};
+
