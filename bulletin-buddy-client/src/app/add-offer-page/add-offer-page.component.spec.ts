@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { AddOfferPageComponent } from './add-offer-page.component';
 
@@ -8,9 +10,10 @@ describe('AddOfferPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddOfferPageComponent ]
+      declarations: [AddOfferPageComponent],
+      imports: [FormsModule, HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddOfferPageComponent);
     component = fixture.componentInstance;
