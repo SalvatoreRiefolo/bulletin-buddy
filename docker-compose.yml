@@ -1,32 +1,26 @@
 version: '3'
 
-# run maven install before building images
-
 services:
   bulletin-buddy-frontend:
-    image: ase/bulletin-buddy-client
-    build: bulletin-buddy-client
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-client:pr-22
     ports:
-      - "8080:80"
+      - "9000:80"
     restart: on-failure
 
   bulletin-buddy-post-service:
-    image: ase/bulletin-post-service
-    build: bulletin-buddy-post-service
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:pr-22
     ports:
       - "8081:8081"
     restart: on-failure
 
   bulletin-buddy-authentication-service:
-    image: ase/bulletin-authentication-service
-    build: bulletin-buddy-authentication-service
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:pr-22
     ports:
       - "8082:8082"
     restart: on-failure
 
   bulletin-buddy-comment-service:
-    image: ase/bulletin-comment-service
-    build: bulletin-buddy-comment-service
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:pr-22
     ports:
       - "8083:8083"
     restart: on-failure
