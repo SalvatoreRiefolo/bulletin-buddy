@@ -78,7 +78,7 @@ jobs:
 
       - name: Log version
         run:
-          echo "New version is: " ${{ steps.get_project_version.outputs.version }}
+          echo "${{ steps.get_project_version.outputs.version }}"
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
