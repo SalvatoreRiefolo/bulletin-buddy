@@ -24,3 +24,18 @@ services:
     ports:
       - "8083:8083"
     restart: on-failure
+
+  postgres-database:
+    image: postgres:14.1-alpine
+    restart: on-failure
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-database:/var/lib/postgresql/data
+
+volumes:
+  postgres-database:
+    driver: local
