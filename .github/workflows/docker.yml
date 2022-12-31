@@ -70,7 +70,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.image }}
 
       - name: Extract module version
-        uses: avides/actions-project-version-check@latest
+        uses: avides/actions-project-version-check@v1.3.0
         id: get_project_version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
