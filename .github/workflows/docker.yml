@@ -78,7 +78,7 @@ jobs:
 
       - name: Log version
         run:
-          echo "${{ steps.get_project_version.outputs.version }}"
+          echo "Version for ${{ matrix.image }} is ${{ steps.get_project_version.outputs.version }}"
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -89,7 +89,7 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.context }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.get_project_version.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
