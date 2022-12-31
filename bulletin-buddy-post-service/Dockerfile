@@ -14,7 +14,7 @@ RUN mvn package
 FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
-COPY --from=maven /app/target/bulletin-buddy-post-service-0.0.1-SNAPSHOT.jar /app/spring-boot.jar
+COPY --from=maven /app/target/bulletin-buddy-post-service-*.*.*.jar /app/spring-boot.jar
 EXPOSE 8081
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]
