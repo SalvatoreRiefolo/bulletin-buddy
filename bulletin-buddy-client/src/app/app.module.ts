@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import { AddPostPageComponent } from './add-post-page/add-post-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     OverviewPageComponent,
     DetailPageComponent,
     LogoutPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    AddPostPageComponent
   ],
   imports: [
     BrowserModule,
