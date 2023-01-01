@@ -7,11 +7,12 @@ import { ROUTES } from './app.routes';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { AddOfferPageComponent } from './add-offer-page/add-offer-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { AddOfferPageComponent } from './add-offer-page/add-offer-page.component
     OverviewPageComponent,
     DetailPageComponent,
     LogoutPageComponent,
-    AddOfferPageComponent
+    AddOfferPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
