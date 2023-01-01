@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
-import { AddOfferPageComponent } from './add-offer-page/add-offer-page.component';
+import { AddPostPageComponent } from './add-post-page/add-post-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { AddOfferPageComponent } from './add-offer-page/add-offer-page.component
     OverviewPageComponent,
     DetailPageComponent,
     LogoutPageComponent,
-    AddOfferPageComponent
+    AddPostPageComponent
   ],
   imports: [
     BrowserModule,

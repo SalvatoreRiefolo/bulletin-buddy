@@ -5,11 +5,11 @@ import { AuthenticationService } from '../authentication.service';
 import * as uuid from 'uuid';
 
 @Component({
-  selector: 'app-add-offer-page',
-  templateUrl: './add-offer-page.component.html',
-  styleUrls: ['./add-offer-page.component.css']
+  selector: 'app-post-offer-page',
+  templateUrl: './add-post-page.component.html',
+  styleUrls: ['./add-post-page.component.css']
 })
-export class AddOfferPageComponent implements OnInit {
+export class AddPostPageComponent implements OnInit {
   public postType2LabelMapping = PostType2LabelMapping;
 
   public postTypes = Object.values(PostType).filter(value => typeof value !== 'number');;

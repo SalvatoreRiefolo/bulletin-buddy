@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h1 class="display-4 text-center">Add New Offer</h1>
+    <h1 class="display-4 text-center">Add New Post</h1>
     <div class="container mt-5 px-5">
         <div class="row vert-line-div"></div>
     </div>
@@ -27,13 +27,13 @@
                             {{type}}
                         </option>
                     </select>
-                    <label class="form-label" for="postType">Type of post</label>
+                    <label class="form-label" for="postType">Type of Post</label>
                 </div>
 
                 <!-- Submit button -->
                 <a routerLink="/overview">
                     <button type="submit" (click)="submit()" [disabled]="loginForm.invalid"
-                        class="btn btn-primary btn-block mb-4">Add Offer</button>
+                        class="btn btn-primary btn-block mb-4">Add Post</button>
                 </a>
                 
             </form>

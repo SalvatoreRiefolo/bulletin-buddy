@@ -2,20 +2,20 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
-import { AddOfferPageComponent } from './add-offer-page.component';
+import { AddPostPageComponent } from './add-post-page.component';
 
-describe('AddOfferPageComponent', () => {
-  let component: AddOfferPageComponent;
-  let fixture: ComponentFixture<AddOfferPageComponent>;
+describe('AddPostPageComponent', () => {
+  let component: AddPostPageComponent;
+  let fixture: ComponentFixture<AddPostPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddOfferPageComponent],
+      declarations: [AddPostPageComponent],
       imports: [FormsModule, HttpClientTestingModule]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(AddOfferPageComponent);
+    fixture = TestBed.createComponent(AddPostPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
