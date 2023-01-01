@@ -27,4 +27,8 @@ public class AuthenticationService {
         return u -> u.getName().equals(name) &&
                     u.getPassword().equals(password);
     }
+
+    public boolean validateEmail(String email) {
+        return !(users.stream().anyMatch(u -> u.getName().equals(email)));
+    }
 }
