@@ -23,4 +23,8 @@ public class AuthenticationController {
         System.out.println(user);
         return authenticationService.authenticateUser(user.getName(), user.getPassword());
     }
+    @GetMapping(value = "/validate")
+    public boolean validateEmail(@RequestParam("name") String name){
+       return authenticationService.validateEmail(name);
+    }
 }
