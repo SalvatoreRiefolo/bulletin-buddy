@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CommentsService {
 
-  private commentServiceUrl = '/commentservice/'
+  private commentServiceUrl = "/commentservice/"
 
   constructor(private http: HttpClient) { }
   getComments(id: string) {
