@@ -43,12 +43,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.8.1</version>
+            <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
+        <finalName>authentication-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
