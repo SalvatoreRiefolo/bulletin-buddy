@@ -41,4 +41,11 @@ spring.cloud.gateway:
       filters:
         - RewritePath=/clientservice/(?<path>.*), /$\{path}
 
+    - id: default
+      uri: ${clientservice.url:http://localhost:8085}
+      predicates:
+        - Path=/**
+      filters:
+        - RewritePath=/clientservice/(?<path>.*), /$\{path}
+
 
