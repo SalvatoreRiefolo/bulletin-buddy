@@ -7,16 +7,6 @@ networks:
 # run maven install before building images
 
 services:
-#  bulletin-buddy-frontend:
-#    image: ase/bulletin-buddy-client
-#    build: bulletin-buddy-client
-#    container_name: frontend
-#    hostname: frontend
-#    ports:
-#      - "8080:8080"
-#    restart: on-failure
-#    networks:
-#      - apps
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
