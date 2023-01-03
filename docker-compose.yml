@@ -58,6 +58,6 @@ services:
     networks:
       - apps
     ports:
-      - '8084:8084'
+      - '8080:8080'
     environment:
       - JAVA_TOOL_OPTIONS=-Dpostservice.url=http://postservice:8081 -Dauthenticationservice.url=http://authenticationservice:8082 -Dclientservice.url=http://clientservice:8085 -Dcommentservice.url=http://commentservice:8083
