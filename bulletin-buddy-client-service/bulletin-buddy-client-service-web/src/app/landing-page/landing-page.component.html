@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h1 class="display-3 text-center">BULLETIN BUDDY</h1>
+    <div class="container mt-5 px-5">
+        <div class="row vert-line-div"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5 px-5">
+        <div class="col-2"></div>
+        <div class="col-8 display-5 text-center login">
+            <a routerLink="/login" *ngIf="!(isLoggedIn())"><button type="button" class="btn btn-secondary login"
+                    data-cy="landing-page-button-login">Login</button></a>
+            <a routerLink="/register" *ngIf="!(isLoggedIn())"><button type="button" class="btn btn-secondary login mx-1"
+                    data-cy="landing-page-button-login">Register</button></a>
+            <a routerLink="/logout" *ngIf="isLoggedIn()"><button (click)="logout()" type="button"
+                    class="btn btn-secondary login" data-cy="landing-page-button-logout">Logout</button></a>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row mt-5 px-5">
+        <div class="col-4 text-center top-post" *ngFor="let item of posts">
+            <a routerLink="/post/{{item.id}}" class="fill-div text-white">
+                <!-- TODO: Add link to the detail view of the coresponding post -->
+                <h2>{{item.title}}</h2>
+                <!--<div>{{item.publishTimestamp}}</div> -->
+                <div class="top-post-body">{{item.body}}</div>
+                <div>{{item.publisherEmail}}</div>
+            </a>
+        </div>
+    </div>
+</div>
