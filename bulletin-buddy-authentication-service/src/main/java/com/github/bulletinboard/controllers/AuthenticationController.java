@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/authentication")
-@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
@@ -23,5 +22,9 @@ public class AuthenticationController {
         User user = new User(name, password);
         System.out.println(user);
         return authenticationService.authenticateUser(user.getName(), user.getPassword());
+    }
+    @GetMapping(value = "/validate")
+    public boolean validateEmail(@RequestParam("name") String name){
+       return authenticationService.validateEmail(name);
     }
 }

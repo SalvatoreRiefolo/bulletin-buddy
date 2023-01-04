@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        context:
+          support: WARN
+        cloud:
+          gateway: TRACE
+
+spring.cloud.gateway:
+  routes:
+    - id: postservice
+      uri: ${postservice.url:http://localhost:8081}
+      predicates:
+        - Path=/postservice/**
+      filters:
+        - RewritePath=/postservice/(?<path>.*), /$\{path}
+
+    - id: authenticationservice
+      uri: ${authenticationservice.url:http://localhost:8082}
+      predicates:
+        - Path=/authenticationservice/**
+      filters:
+        - RewritePath=/authenticationservice/(?<path>.*), /$\{path}
+
+    - id: commentservice
+      uri: ${commentservice.url:http://localhost:8083}
+      predicates:
+        - Path=/commentservice/**
+      filters:
+        - RewritePath=/commentservice/(?<path>.*), /$\{path}
+
+    - id: clientservice
+      uri: ${clientservice.url:http://localhost:8085}
+      predicates:
+        - Path=/clientservice/**
+      filters:
+        - RewritePath=/clientservice/(?<path>.*), /$\{path}
+
+    - id: default
+      uri: ${clientservice.url:http://localhost:8085}
+      predicates:
+        - Path=/**
+      filters:
+        - RewritePath=/clientservice/(?<path>.*), /$\{path}
+
+

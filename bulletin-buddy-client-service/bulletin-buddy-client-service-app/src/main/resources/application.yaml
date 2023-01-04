@@ -1,0 +1,7 @@
+server:
+  port: 8085
+  ssl:
+    enabled: false
+
+spring.application:
+  name: clientservice
