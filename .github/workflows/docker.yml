@@ -25,18 +25,16 @@ jobs:
     strategy:
       matrix:
         include:
-          - context: ./bulletin-buddy-client
-            image: bulletin-buddy-client
-            version-file: package.json
+          - context: ./bulletin-buddy-gateway
+            image: bulletin-buddy-gateway
+          - context: ./bulletin-buddy-client-service
+            image: bulletin-buddy-client-service
           - context: ./bulletin-buddy-post-service
             image: bulletin-buddy-post-service
-            version-file: pom.xml
           - context: ./bulletin-buddy-authentication-service
             image: bulletin-buddy-authentication-service
-            version-file: pom.xml
           - context: ./bulletin-buddy-comment-service
             image: bulletin-buddy-comment-service
-            version-file: pom.xml
     permissions:
       contents: read
       packages: write
@@ -74,7 +72,7 @@ jobs:
         id: get_project_version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          file-to-check: ${{ matrix.context }}/${{ matrix.version-file }}
+          file-to-check: ${{ matrix.context }}/pom.xml
 
       - name: Log version
         run:
