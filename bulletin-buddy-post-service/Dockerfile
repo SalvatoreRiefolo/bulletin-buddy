@@ -1,9 +1,3 @@
-# run it like this:
-# Build:
-# $> docker build -t bulletin-buddy/backend -f Dockerfile .
-# Run:
-# $> docker run -p 8081:8081 -i -t bulletin-buddy/backend:latest
-
 FROM maven:3-eclipse-temurin-17-alpine as maven
 
 WORKDIR /app
