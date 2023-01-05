@@ -13,7 +13,7 @@ jobs:
   build:
     defaults:
       run:
-        working-directory: bulletin-buddy-client
+        working-directory: bulletin-buddy-client-service/bulletin-buddy-client-service-web
 
     runs-on: ubuntu-latest
 
