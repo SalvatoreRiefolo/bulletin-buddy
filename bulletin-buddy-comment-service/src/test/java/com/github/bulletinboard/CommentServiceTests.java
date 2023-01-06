@@ -61,7 +61,7 @@ class CommentServiceTests {
         commentService.addComment(comment);
 
         //ASSERT
-        Comment[] result = commentService.getCommentsByOfferId(offerId);
+        Comment[] result = commentService.getCommentsByPostId(offerId);
         assertEquals(result.length, 1);
 
         Comment retrievedComment = result[0];
@@ -90,7 +90,7 @@ class CommentServiceTests {
         }
 
         // ASSERT
-        Comment[] result = commentService.getCommentsByOfferId(OFFER_1_ID);
+        Comment[] result = commentService.getCommentsByPostId(OFFER_1_ID);
         assertNotNull(result);
         assertEquals(result.length, COMMENT_COUNT);
 

@@ -68,9 +68,9 @@ public class CommentRepositoryIntegrationTest {
         assertNotNull(comments);
         assertEquals(2, comments.size());
         assertNotNull(comments.get(0));
-        assertEquals(OFFER_1_ID, comments.get(0).getOfferId());
+        assertEquals(OFFER_1_ID, comments.get(0).getPostId());
         assertNotNull(comments.get(1));
-        assertEquals(OFFER_1_ID, comments.get(1).getOfferId());
+        assertEquals(OFFER_1_ID, comments.get(1).getPostId());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class CommentRepositoryIntegrationTest {
         // ASSERT
         assertNotNull(savedComment);
         assertEquals(savedComment.getCommentId(), comment.getCommentId());
-        assertEquals(savedComment.getOfferId(), comment.getOfferId());
+        assertEquals(savedComment.getPostId(), comment.getPostId());
         assertEquals(savedComment.getContent(), comment.getContent());
         assertEquals(0, comment.getTimestamp().compareTo(savedComment.getTimestamp()));
     }
