@@ -14,7 +14,7 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public Comment[] getCommentsByOfferId(UUID offerId){
+    public Comment[] getCommentsByPostId(UUID offerId){
         List<Comment> matches = commentRepository.findByOfferId(offerId);
         return matches.toArray(Comment[]::new);
     }

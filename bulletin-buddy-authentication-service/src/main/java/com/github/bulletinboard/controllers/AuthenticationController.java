@@ -18,9 +18,13 @@ public class AuthenticationController {
     }
 
     @GetMapping()
-    public boolean authenticateUser(@RequestParam("name") String name, @RequestParam("password") String password) {
+    public boolean authenticateUser(@RequestParam("name") String name, @RequestParam("passwd") String password) {
         User user = new User(name, password);
         System.out.println(user);
         return authenticationService.authenticateUser(user.getName(), user.getPassword());
+    }
+    @GetMapping(value = "/validate")
+    public boolean validateEmail(@RequestParam("name") String name){
+       return authenticationService.validateEmail(name);
     }
 }

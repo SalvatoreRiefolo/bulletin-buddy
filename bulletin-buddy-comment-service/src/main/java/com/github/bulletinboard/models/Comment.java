@@ -16,8 +16,8 @@ public class Comment {
     @Column(name = "ID")
     @Id
     private UUID commentId;
-    @Column(name = "OFFER_ID")
-    private UUID offerId;
+    @Column(name = "POST_ID")
+    private UUID postId;
     @Column(name = "CONTENT")
     private String content;
     @Column(name = "POSTER_EMAIL")
@@ -30,9 +30,9 @@ public class Comment {
         this.timestamp = new Date();
     }
 
-    public Comment(UUID commentId, UUID offerId, String content, String posterEmail) {
+    public Comment(UUID commentId, UUID postId, String content, String posterEmail) {
         this.commentId = commentId;
-        this.offerId = offerId;
+        this.postId = postId;
         this.content = content;
         this.posterEmail = posterEmail;
         this.timestamp = new Date();
@@ -58,12 +58,12 @@ public class Comment {
         return timestamp;
     }
 
-    public UUID getOfferId() {
-        return offerId;
+    public UUID getPostId() {
+        return postId;
     }
 
-    public void setOfferId(UUID offerId) {
-        this.offerId = offerId;
+    public void setPostId(UUID postId) {
+        this.postId = postId;
     }
 
     public UUID getCommentId() {
