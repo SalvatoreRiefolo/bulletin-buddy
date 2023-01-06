@@ -22,7 +22,7 @@ public class Comment {
     private String content;
     @Column(name = "POSTER_EMAIL")
     private String posterEmail;
-    @Column(name = "TIMESTAMP")
+    @Column(name = "CREATION_TIMESTAMP")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date timestamp;
 

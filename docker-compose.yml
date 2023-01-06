@@ -40,8 +40,17 @@ services:
     ports:
       - "8083:8083"
     restart: on-failure
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL=false
     networks:
       - apps
+      - db
 
   bulletin-buddy-client-service:
     image: ase/bulletin-client-service
@@ -51,16 +60,8 @@ services:
     ports:
       - "8085:8085"
     restart: on-failure
-    depends_on:
-      - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:54320/postgres
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     networks:
       - apps
-      - db
 
   gateway:
     image: ase/bulletin-gateway
@@ -85,6 +86,8 @@ services:
       PGDATA: /var/lib/postgresql/data
     volumes:
       - local_pgdata:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     networks:
       - db
 
