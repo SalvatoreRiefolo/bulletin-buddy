@@ -27,8 +27,8 @@ import static org.junit.Assert.*;
 @ContextConfiguration(initializers = { CommentRepositoryIntegrationTest.Initializer.class })
 public class CommentRepositoryIntegrationTest {
 
-    private static UUID OFFER_1_ID = UUID.fromString("f26aef4a-317b-43cc-bf2d-e4afae2bd92c");
-    private static UUID OFFER_2_ID = UUID.fromString("ed1f90d2-6c22-438a-b022-bdf1cb93b721");
+    private static UUID POST_1_ID = UUID.fromString("f26aef4a-317b-43cc-bf2d-e4afae2bd92c");
+    private static UUID POST_2_ID = UUID.fromString("ed1f90d2-6c22-438a-b022-bdf1cb93b721");
     private static UUID COMMENT_1_ID = UUID.fromString("c575904e-051d-4479-a480-aa6278500c32");
     private static UUID COMMENT_2_ID = UUID.fromString("bcafbbba-e866-4a11-b7db-040a8d4db911");
     private static UUID COMMENT_3_ID = UUID.fromString("9dd78ec1-277d-4cc2-94eb-62d84fcd8b63");
@@ -62,15 +62,15 @@ public class CommentRepositoryIntegrationTest {
         insertComments();
 
         // ACT
-        List<Comment> comments = commentRepository.findByPostId(OFFER_1_ID);
+        List<Comment> comments = commentRepository.findByPostId(POST_1_ID);
 
         // ASSERT
         assertNotNull(comments);
         assertEquals(2, comments.size());
         assertNotNull(comments.get(0));
-        assertEquals(OFFER_1_ID, comments.get(0).getPostId());
+        assertEquals(POST_1_ID, comments.get(0).getPostId());
         assertNotNull(comments.get(1));
-        assertEquals(OFFER_1_ID, comments.get(1).getPostId());
+        assertEquals(POST_1_ID, comments.get(1).getPostId());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class CommentRepositoryIntegrationTest {
     @Transactional
     public void testInsertFirstComment(){
         // ARRANGE
-        Comment comment = new Comment(COMMENT_1_ID, OFFER_1_ID, "First comment", "email2@example.com");
+        Comment comment = new Comment(COMMENT_1_ID, POST_1_ID, "First comment", "email2@example.com");
 
         // ACT
         Comment savedComment = commentRepository.saveAndFlush(comment);
@@ -106,9 +106,9 @@ public class CommentRepositoryIntegrationTest {
 
 
     private void insertComments() {
-        commentRepository.save(new Comment(COMMENT_1_ID, OFFER_1_ID, "comment1", "email2@example.com"));
-        commentRepository.save(new Comment(COMMENT_2_ID, OFFER_1_ID, "comment2", "email2@example.com"));
-        commentRepository.save(new Comment(COMMENT_3_ID, OFFER_2_ID, "comment3", "email2@example.com"));
+        commentRepository.save(new Comment(COMMENT_1_ID, POST_1_ID, "comment1", "email2@example.com"));
+        commentRepository.save(new Comment(COMMENT_2_ID, POST_1_ID, "comment2", "email2@example.com"));
+        commentRepository.save(new Comment(COMMENT_3_ID, POST_2_ID, "comment3", "email2@example.com"));
         commentRepository.flush();
     }
 }
