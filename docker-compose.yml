@@ -1,7 +1,9 @@
-version: '3'
+version: '3.8'
 
 networks:
   apps:
+    driver: bridge
+  db:
     driver: bridge
 
 # run maven install before building images
@@ -53,11 +55,12 @@ services:
       - db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     networks:
       - apps
+      - db
 
   gateway:
     image: ase/bulletin-gateway
@@ -70,10 +73,35 @@ services:
       - JAVA_TOOL_OPTIONS=-Dpostservice.url=http://postservice:8081 -Dauthenticationservice.url=http://authenticationservice:8082 -Dclientservice.url=http://clientservice:8085 -Dcommentservice.url=http://commentservice:8083
 
   db:
-    image: postgres:13.1-alpine
-    container_name: db
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    image: postgres
+    container_name: postgres_container
+    restart: always
     ports:
-      - '5432:5432'
+      - "54320:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres_db
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+    networks:
+      - db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - db
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
