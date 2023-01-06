@@ -44,11 +44,11 @@ public class CommentInitializer implements InitializingBean {
         c5.setPosterEmail("gerhard.testposter@test.com");
         c5.setContent("Dolor sit amet.");
 
-        commentService.addComment(c1);
-        commentService.addComment(c2);
-        commentService.addComment(c3);
-        commentService.addComment(c4);
-        commentService.addComment(c5);
+        // commentService.addComment(c1);
+        // commentService.addComment(c2);
+        // commentService.addComment(c3);
+        // commentService.addComment(c4);
+        // commentService.addComment(c5);
 
     }
 }
