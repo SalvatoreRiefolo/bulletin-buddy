@@ -62,7 +62,7 @@ public class CommentRepositoryIntegrationTest {
         insertComments();
 
         // ACT
-        List<Comment> comments = commentRepository.findByOfferId(OFFER_1_ID);
+        List<Comment> comments = commentRepository.findByPostId(OFFER_1_ID);
 
         // ASSERT
         assertNotNull(comments);

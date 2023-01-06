@@ -15,7 +15,7 @@ public class CommentService {
     private CommentRepository commentRepository;
 
     public Comment[] getCommentsByPostId(UUID offerId){
-        List<Comment> matches = commentRepository.findByOfferId(offerId);
+        List<Comment> matches = commentRepository.findByPostId(offerId);
         return matches.toArray(Comment[]::new);
     }
 

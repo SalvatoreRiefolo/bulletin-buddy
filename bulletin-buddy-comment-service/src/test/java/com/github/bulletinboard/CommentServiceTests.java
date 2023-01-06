@@ -55,7 +55,7 @@ class CommentServiceTests {
         savedComments.add(comment);
 
         when(commentRepository.saveAndFlush(any(Comment.class))).thenReturn(comment);
-        when(commentRepository.findByOfferId(any(UUID.class))).thenReturn(savedComments);
+        when(commentRepository.findByPostId(any(UUID.class))).thenReturn(savedComments);
 
         // ACT
         commentService.addComment(comment);
@@ -82,7 +82,7 @@ class CommentServiceTests {
         savedComments.add(new Comment(COMMENT_5_ID, OFFER_1_ID, "comment5", "comment5@mail.com"));
 
         when(commentRepository.saveAndFlush(any(Comment.class))).thenReturn(null);
-        when(commentRepository.findByOfferId(any(UUID.class))).thenReturn(savedComments);
+        when(commentRepository.findByPostId(any(UUID.class))).thenReturn(savedComments);
 
         // ACT
         for (int i = 0; i < COMMENT_COUNT; i++) {

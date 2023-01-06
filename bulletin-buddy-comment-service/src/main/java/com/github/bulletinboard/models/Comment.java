@@ -28,6 +28,7 @@ public class Comment {
 
     public Comment(){
         this.timestamp = new Date();
+        this.commentId = UUID.randomUUID();
     }
 
     public Comment(UUID commentId, UUID postId, String content, String posterEmail) {
