@@ -4,14 +4,11 @@ networks:
   apps:
     driver: bridge
 
-volumes:
-  postgres-database:
-    driver: local
-
 services:
 
   gateway:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:pr-22
+    image: ase/bulletin-gateway
+    build: bulletin-buddy-gateway
     container_name: gateway
     networks:
       - apps
@@ -26,7 +23,8 @@ services:
         -Dclientservice.url=http://clientservice:8085
 
   bulletin-buddy-post-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:0.1.0
+    image: ase/bulletin-post-service
+    build: bulletin-buddy-post-service
     container_name: post-service
     hostname: postservice
     ports:
@@ -36,7 +34,8 @@ services:
       - apps
 
   bulletin-buddy-authentication-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:0.1.0
+    image: ase/bulletin-authentication-service
+    build: bulletin-buddy-authentication-service
     container_name: authentication-service
     hostname: authenticationservice
     ports:
@@ -46,7 +45,8 @@ services:
       - apps
 
   bulletin-buddy-comment-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:0.1.0
+    image: ase/bulletin-comment-service
+    build: bulletin-buddy-comment-service
     container_name: comment-service
     hostname: commentservice
     ports:
@@ -56,7 +56,8 @@ services:
       - apps
 
   bulletin-buddy-client-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:0.1.0
+    image: ase/bulletin-client-service
+    build: bulletin-buddy-client-service
     container_name: client-service
     hostname: clientservice
     ports:
@@ -64,14 +65,3 @@ services:
     restart: on-failure
     networks:
       - apps
-
-  postgres-database:
-    image: postgres:15.1-alpine
-    restart: on-failure
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
-    volumes:
-      - postgres-database:/var/lib/postgresql/data
