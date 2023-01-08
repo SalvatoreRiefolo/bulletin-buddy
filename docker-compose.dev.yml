@@ -1,0 +1,67 @@
+version: '3'
+
+networks:
+  apps:
+    driver: bridge
+
+services:
+
+  gateway:
+    image: ase/bulletin-gateway
+    build: bulletin-buddy-gateway
+    container_name: gateway
+    networks:
+      - apps
+    ports:
+      - '8080:8080'
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dpostservice.url=http://postservice:8081
+        -Dauthenticationservice.url=http://authenticationservice:8082
+        -Dcommentservice.url=http://commentservice:8083
+        -Dclientservice.url=http://clientservice:8085
+
+  bulletin-buddy-post-service:
+    image: ase/bulletin-post-service
+    build: bulletin-buddy-post-service
+    container_name: post-service
+    hostname: postservice
+    ports:
+      - "8081:8081"
+    restart: on-failure
+    networks:
+      - apps
+
+  bulletin-buddy-authentication-service:
+    image: ase/bulletin-authentication-service
+    build: bulletin-buddy-authentication-service
+    container_name: authentication-service
+    hostname: authenticationservice
+    ports:
+      - "8082:8082"
+    restart: on-failure
+    networks:
+      - apps
+
+  bulletin-buddy-comment-service:
+    image: ase/bulletin-comment-service
+    build: bulletin-buddy-comment-service
+    container_name: comment-service
+    hostname: commentservice
+    ports:
+      - "8083:8083"
+    restart: on-failure
+    networks:
+      - apps
+
+  bulletin-buddy-client-service:
+    image: ase/bulletin-client-service
+    build: bulletin-buddy-client-service
+    container_name: client-service
+    hostname: clientservice
+    ports:
+      - "8085:8085"
+    restart: on-failure
+    networks:
+      - apps

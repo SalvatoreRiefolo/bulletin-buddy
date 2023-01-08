@@ -3,17 +3,35 @@ version: '3.8'
 networks:
   apps:
     driver: bridge
+  # move to docker-compose.dev
   db:
     driver: bridge
+  # move to docker-compose.dev
 
-# run maven install before building images
+volumes:
+  postgres-database:
+    driver: local
 
 services:
 
+  gateway:
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:pr-22
+    container_name: gateway
+    networks:
+      - apps
+    ports:
+      - '8080:8080'
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dpostservice.url=http://postservice:8081
+        -Dauthenticationservice.url=http://authenticationservice:8082
+        -Dcommentservice.url=http://commentservice:8083
+        -Dclientservice.url=http://clientservice:8085
+
   bulletin-buddy-post-service:
-    image: ase/bulletin-post-service
-    build: bulletin-buddy-post-service
-    container_name: postservice
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:0.1.0
+    container_name: post-service
     hostname: postservice
     ports:
       - "8081:8081"
@@ -22,9 +40,8 @@ services:
       - apps
 
   bulletin-buddy-authentication-service:
-    image: ase/bulletin-authentication-service
-    build: bulletin-buddy-authentication-service
-    container_name: authenticationservice
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:0.1.0
+    container_name: authentication-service
     hostname: authenticationservice
     ports:
       - "8082:8082"
@@ -33,13 +50,13 @@ services:
       - apps
 
   bulletin-buddy-comment-service:
-    image: ase/bulletin-comment-service
-    build: bulletin-buddy-comment-service
-    container_name: commentservice
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:0.1.0
+    container_name: comment-service
     hostname: commentservice
     ports:
       - "8083:8083"
     restart: on-failure
+    # move to docker-compose.dev
     depends_on:
       - db
     environment:
@@ -48,14 +65,16 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_HIBERNATE_DDL=false
+    # move to docker-compose.dev
     networks:
       - apps
+    # move to docker-compose.dev
       - db
+    # move to docker-compose.dev
 
   bulletin-buddy-client-service:
-    image: ase/bulletin-client-service
-    build: bulletin-buddy-client-service/bulletin-buddy-client-service-app
-    container_name: clientservice
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:0.1.0
+    container_name: client-service
     hostname: clientservice
     ports:
       - "8085:8085"
@@ -63,16 +82,18 @@ services:
     networks:
       - apps
 
-  gateway:
-    image: ase/bulletin-gateway
-    build: bulletin-buddy-gateway
-    networks:
-      - apps
-    ports:
-      - '8080:8080'
+  postgres-database:
+    image: postgres:15.1-alpine
+    restart: on-failure
     environment:
-      - JAVA_TOOL_OPTIONS=-Dpostservice.url=http://postservice:8081 -Dauthenticationservice.url=http://authenticationservice:8082 -Dclientservice.url=http://clientservice:8085 -Dcommentservice.url=http://commentservice:8083
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-database:/var/lib/postgresql/data
 
+  # move to docker-compose.dev
   db:
     image: postgres
     container_name: postgres_container

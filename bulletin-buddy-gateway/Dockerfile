@@ -1,6 +1,14 @@
+FROM maven:3-eclipse-temurin-17-alpine as maven
+
+WORKDIR /app
+COPY . /app
+
+RUN mvn package
+
 FROM openjdk:17-jdk-alpine
 
-COPY target/bulletin-buddy-gateway-1.0-SNAPSHOT.jar /spring-boot.jar
+WORKDIR /app
+COPY --from=maven /app/target/gateway.jar /app/spring-boot.jar
 EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]
