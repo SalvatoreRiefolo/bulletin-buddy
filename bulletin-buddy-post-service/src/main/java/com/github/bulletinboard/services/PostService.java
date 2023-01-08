@@ -31,7 +31,6 @@ public class PostService {
         List<Post> posts = postRepository.findAllById(Arrays.asList(id));
         if(posts.size() > 0) {
             return posts.get(0);
-
         }
        return null;
     }
