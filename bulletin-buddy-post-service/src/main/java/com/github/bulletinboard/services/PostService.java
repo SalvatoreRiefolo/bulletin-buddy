@@ -1,34 +1,38 @@
 package com.github.bulletinboard.services;
 
 import com.github.bulletinboard.models.Post;
+import com.github.bulletinboard.repositories.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class PostService {
-    List<Post> posts = new ArrayList<>();
+
+    @Autowired
+    private PostRepository postRepository;
 
     public List<Post> getAllPosts() {
-        return posts;
+        return postRepository.findAll();
     }
 
     public void removeAllPosts() {
-        posts.clear();
+        postRepository.deleteAll();
     }
 
     public void addPost(Post post) {
-        posts.add(post);
+        postRepository.saveAndFlush(post);
     }
 
     public Post getPostById(UUID id) {
-        for(int i = 0; i < posts.size(); i++) {
-            if(posts.get(i).getId().equals(id)){
-                return posts.get(i);
-            }
+        List<Post> posts = postRepository.findAllById(Arrays.asList(id));
+        if(posts.size() > 0) {
+            return posts.get(0);
+
         }
-        return null;
+       return null;
     }
 }
