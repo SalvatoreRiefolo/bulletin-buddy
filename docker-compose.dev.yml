@@ -57,7 +57,7 @@ services:
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -83,16 +83,19 @@ services:
     container_name: postgres_container
     restart: always
     ports:
-      - "54320:5432"
+      - "5433:5433"
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: postgres_db
       PGDATA: /var/lib/postgresql/data
+    expose:
+      - "5433"
     volumes:
       - local_pgdata:/var/lib/postgresql/data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+    command: -p 5433
     networks:
       - db
 
