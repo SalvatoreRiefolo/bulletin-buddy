@@ -1,10 +1,7 @@
 package com.github.bulletinboard.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -24,6 +21,7 @@ public class Post {
 
     // add Enumerated
     @Column(name = "TYPE")
+    @Enumerated(EnumType.STRING)
     private PostType type;
 
     // can be extended to other types of posts in future

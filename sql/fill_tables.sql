@@ -1,5 +1,41 @@
 -- CREATE EXTENSION pgcrypto;
 
+INSERT INTO POST
+VALUES
+(
+    '{bb27a1b0-9602-4d1c-9a76-6ab5dca69837}',
+    'Takimata',
+    'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+    'franz.poster@test.com',
+    'REQUEST',
+    current_timestamp
+),
+(
+    '{1240ceb0-2d1b-4fb3-89e1-c30089b5222f}',
+    'Ut labore',
+    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+    'jane.doe@test.com',
+    'OFFER',
+    current_timestamp
+),
+(
+    '{fb32d795-1cee-4935-82a9-74b45a0d826e}',
+    'kasd gubergren',
+    'At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+    'gerhard.testposter@test.com',
+    'REQUEST',
+    current_timestamp
+),
+(
+    '{2019c418-711d-488f-8853-822417551f69}',
+    'Vero accusam',
+    'At vero eos et accusam et justo duo dolores et ea rebum.',
+    'claudia.tester@test.com',
+    'OFFER',
+    current_timestamp
+)
+;
+
 INSERT INTO COMMENT
 VALUES
 (
