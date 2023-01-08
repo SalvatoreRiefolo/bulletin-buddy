@@ -88,7 +88,7 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.context }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.image }}:${{ steps.get_project_version.outputs.version }}
+          tags: ${{ env.REGISTRY }}/salvatoreriefolo/${{ matrix.image }}:${{ steps.get_project_version.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
