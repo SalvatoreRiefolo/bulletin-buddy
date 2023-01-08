@@ -1,17 +1,27 @@
 package com.github.bulletinboard.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "POST")
 public class Post {
+    @Column(name = "ID")
+    @Id
     private UUID id;
+    @Column(name = "TITLE")
     private String title;
+    @Column(name = "BODY")
     private String body;
+    @Column(name = "POSTER_EMAIL")
     private String publisherEmail;
 
     // add Enumerated
+    @Column(name = "TYPE")
+    @Enumerated(EnumType.STRING)
     private PostType type;
 
     // can be extended to other types of posts in future
@@ -20,6 +30,7 @@ public class Post {
         OFFER, REQUEST
     }
 
+    @Column(name = "CREATION_TIMESTAMP")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date publishTimestamp;
 

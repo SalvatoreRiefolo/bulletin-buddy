@@ -18,4 +18,8 @@ public class TestUtilities {
     public static Post createAnOffer(){
         return new Post(new UUID(1, 2),"title sample", "body sample", "email@email.com", Post.PostType.OFFER);
     }
+
+    public static Post createAnOffer(UUID id){
+        return new Post(id,"title sample", "body sample", "email@email.com", Post.PostType.OFFER);
+    }
 }

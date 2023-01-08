@@ -1,23 +1,38 @@
 package com.github.bulletinboard.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "COMMENT")
 public class Comment {
-    private UUID postId;
-    private String content;
-    private String posterEmail;
 
+    @Column(name = "ID")
+    @Id
+    private UUID commentId;
+    @Column(name = "POST_ID")
+    private UUID postId;
+    @Column(name = "CONTENT")
+    private String content;
+    @Column(name = "POSTER_EMAIL")
+    private String posterEmail;
+    @Column(name = "CREATION_TIMESTAMP")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private final Date timestamp;
 
     public Comment(){
         this.timestamp = new Date();
+        this.commentId = UUID.randomUUID();
     }
 
-    public Comment(UUID postId, String content, String posterEmail) {
+    public Comment(UUID commentId, UUID postId, String content, String posterEmail) {
+        this.commentId = commentId;
         this.postId = postId;
         this.content = content;
         this.posterEmail = posterEmail;
@@ -50,5 +65,13 @@ public class Comment {
 
     public void setPostId(UUID postId) {
         this.postId = postId;
+    }
+
+    public UUID getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(UUID commentId) {
+        this.commentId = commentId;
     }
 }
