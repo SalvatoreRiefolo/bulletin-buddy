@@ -1,12 +1,8 @@
-version: '3.8'
+version: '3'
 
 networks:
   apps:
     driver: bridge
-  # move to docker-compose.dev
-  db:
-    driver: bridge
-  # move to docker-compose.dev
 
 volumes:
   postgres-database:
@@ -56,21 +52,8 @@ services:
     ports:
       - "8083:8083"
     restart: on-failure
-    # move to docker-compose.dev
-    depends_on:
-      - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_HIBERNATE_DDL=false
-    # move to docker-compose.dev
     networks:
       - apps
-    # move to docker-compose.dev
-      - db
-    # move to docker-compose.dev
 
   bulletin-buddy-client-service:
     image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:0.1.0
@@ -92,40 +75,3 @@ services:
       - '5432:5432'
     volumes:
       - postgres-database:/var/lib/postgresql/data
-
-  # move to docker-compose.dev
-  db:
-    image: postgres
-    container_name: postgres_container
-    restart: always
-    ports:
-      - "54320:5432"
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: postgres_db
-      PGDATA: /var/lib/postgresql/data
-    volumes:
-      - local_pgdata:/var/lib/postgresql/data
-      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
-    networks:
-      - db
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin4_container
-    restart: always
-    ports:
-      - "5050:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    networks:
-      - db
-
-volumes:
-  local_pgdata:
-  pgadmin-data:
