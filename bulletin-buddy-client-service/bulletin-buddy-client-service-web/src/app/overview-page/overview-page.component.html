@@ -26,7 +26,7 @@
     </div>
   </div>
 </div>
-
+<!-- TODO clean up code later -->
 <div class="container mt-5">
   <div class="container mx-5">
     <div class="row mr-5" *ngFor="let item of posts">
@@ -45,7 +45,6 @@
       <ng-template #all>
         <a routerLink="/post/{{item.id}}" class="text-decoration-none">
           <div class="col-10 text-white post">
-            <h3>in items</h3>
             <h3>{{item.title}}</h3>
             <p>{{item.publisherEmail}}</p>
           </div>
@@ -53,9 +52,8 @@
         <div class="col-2"></div>
       </ng-template>
       <ng-template #offers>
-        <a routerLink="/post/{{item.id}}" class="text-decoration-none">
+        <a routerLink="/post/{{item.id}}" class="text-decoration-none" *ngIf="item.type.toString() == 'OFFER'">
           <div class="col-10 text-white post">
-            <h3>in items</h3>
             <h3>{{item.title}}</h3>
             <p>{{item.publisherEmail}}</p>
           </div>
@@ -63,9 +61,8 @@
         <div class="col-2"></div>
       </ng-template>
       <ng-template #requests>
-        <a routerLink="/post/{{item.id}}" class="text-decoration-none">
+        <a routerLink="/post/{{item.id}}" class="text-decoration-none" *ngIf="item.type.toString() == 'REQUEST'">
           <div class="col-10 text-white post">
-            <h3>in items</h3>
             <h3>{{item.title}}</h3>
             <p>{{item.publisherEmail}}</p>
           </div>
