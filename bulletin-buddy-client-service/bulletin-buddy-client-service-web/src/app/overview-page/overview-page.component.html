@@ -2,6 +2,10 @@
   <h1 class="display-3 text-center">OVERVIEW</h1>
   <div class="container mt-5 px-5">
     <div class="row vert-line-div"></div>
+  </div>
+  <h1 class="display-3 text-center">OVERVIEW</h1>
+  <div class="container mt-5 px-5">
+    <div class="row vert-line-div"></div>
     <div class="form-outline mb-4">
       <label class="form-label" for="postType">Select filter option</label>
       <select id="postType" (ngModelChange)="filter_change($event)" name="filter" class="form-control" [(ngModel)]="filter_option">
@@ -13,6 +17,50 @@
     </div>
   </div>
 </div>
+<!-- PostType input from Vit :D -->
+<div class="form-outline mb-4">
+  <label class="form-label" for="postType">Select filter option</label>
+  <select id="postType" (ngModelChange)="filter_change($event)"  name="filter" class="form-control" [(ngModel)]="filter_option">
+    <option value="ALL">Show ALL</option>
+    <option *ngFor="let type of postTypes" value="{{type}}">
+      Show {{type}}S
+    </option>
+  </select>
+
+</div>
+<!-- Source: https://stackoverflow.com/questions/62047190/how-can-i-change-content-page-based-on-mat-option-angular -->
+<ng-container [ngSwitch]="filter_option">
+  <ng-container *ngSwitchCase="'ALL'">
+    <ng-container *ngTemplateOutlet="firstContent"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'OFFER'">
+    <ng-container *ngTemplateOutlet="secondContent"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'REQUEST'">
+    <ng-container *ngTemplateOutlet="thirdContent"></ng-container>
+  </ng-container>
+</ng-container>
+<ng-template #firstContent>
+  <div class="container mt-5">
+    <div class="container mx-5">
+      <h3>HELLO</h3>
+      <div class="row mr-5" *ngFor="let item of posts">
+        <h1>in loop</h1>
+        <a routerLink="/post/{{item.id}}" class="text-decoration-none">
+          <div class="col-10 text-white post">
+            <h3>in items</h3>
+            <h3>{{item.title}}</h3>
+            <p>{{item.publisherEmail}}</p>
+          </div>
+        </a>
+        <div class="col-2"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #secondContent><p>The second option content</p></ng-template>
+<ng-template #thirdContent><p>The third option content</p></ng-template>
+
 <!-- TODO clean up code later -->
 <div class="container mt-5">
   <div class="container mx-5">
