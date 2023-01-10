@@ -5,5 +5,9 @@
 }
 .post:hover {
     background-color: rgb(132, 193, 255);
+}
 
+.form-control {
+  background: lightgray;
+  width:175px;
 }
