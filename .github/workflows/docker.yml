@@ -74,9 +74,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           file-to-check: ${{ matrix.context }}/pom.xml
 
-      - name: Log version
+      - name: Log metadata
         run:
           echo "Version for ${{ matrix.image }} is ${{ steps.get_project_version.outputs.version }}"
+          echo "Tags for ${{ matrix.image }} are ${{ steps.meta.outputs.tags }}"
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -87,7 +88,7 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.context }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ matrix.image }}:${{ steps.get_project_version.outputs.version }}
+          tags: ${{ env.REGISTRY }}/salvatoreriefolo/${{ matrix.image }}:${{ steps.get_project_version.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
