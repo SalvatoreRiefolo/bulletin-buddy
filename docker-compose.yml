@@ -11,7 +11,7 @@ volumes:
 services:
 
   gateway:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:pr-22
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:0.1.0
     container_name: gateway
     networks:
       - apps
