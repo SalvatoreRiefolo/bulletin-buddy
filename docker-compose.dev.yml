@@ -6,6 +6,10 @@ networks:
   db:
     driver: bridge
 
+volumes:
+  pg-data:
+  pgadmin-data:
+
 services:
 
   gateway:
@@ -101,7 +105,7 @@ services:
     expose:
       - "5433"
     volumes:
-      - local_pgdata:/var/lib/postgresql/data
+      - pg-data:/var/lib/postgresql/data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     command: -p 5433
@@ -121,7 +125,3 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     networks:
       - db
-
-volumes:
-  local_pgdata:
-  pgadmin-data:
