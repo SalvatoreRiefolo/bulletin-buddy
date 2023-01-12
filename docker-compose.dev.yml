@@ -21,6 +21,9 @@ services:
         -Dauthenticationservice.url=http://authenticationservice:8082
         -Dcommentservice.url=http://commentservice:8083
         -Dclientservice.url=http://clientservice:8085
+#        -Dspring.cloud.consul.host=consul_container
+#    depends_on:
+#      - consul
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
@@ -65,3 +68,21 @@ services:
     restart: on-failure
     networks:
       - apps
+
+  consul:
+    image: consul:1.9.5
+    container_name: consul_container
+    hostname: consul_container
+    ports:
+      - '8500:8500'
+    networks:
+      - apps
+    volumes:
+      - consul_config_data:/consul/config
+      - consul_data:/consul/data
+    command: agent -server -ui -ui-content-path=/devops/consul/ui -bootstrap-expect=1 -data-dir=/consul/data -config-dir=/consul/data -client=0.0.0.0
+
+
+volumes:
+  consul_config_data:
+  consul_data:
