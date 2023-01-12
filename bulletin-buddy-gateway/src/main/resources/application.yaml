@@ -1,6 +1,27 @@
 server:
   port: 8080
 
+spring.application:
+  name: gateway
+
+spring.cloud.service-registry:
+  auto-registration:
+    enabled: false
+
+spring.cloud.config:
+  enabled: false
+
+spring.cloud:
+  compatibility-verifier:
+    enabled: false
+  consul:
+    config:
+      enabled: false
+    discovery:
+      enabled: true
+      hostname: localhost
+      port: 8500
+
 logging:
   level:
     root: INFO

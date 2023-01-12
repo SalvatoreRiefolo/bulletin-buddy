@@ -21,18 +21,25 @@ services:
         -Dauthenticationservice.url=http://authenticationservice:8082
         -Dcommentservice.url=http://commentservice:8083
         -Dclientservice.url=http://clientservice:8085
-#        -Dspring.cloud.consul.host=consul_container
-#    depends_on:
-#      - consul
+        -Dspring.cloud.consul.host=consul_container
+    depends_on:
+      - consul
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
     build: bulletin-buddy-post-service
     container_name: post-service
     hostname: postservice
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
     ports:
       - "8081:8081"
     restart: on-failure
+    depends_on:
+      - consul
     networks:
       - apps
 
