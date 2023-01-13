@@ -19,8 +19,14 @@ spring.cloud:
       enabled: false
     discovery:
       enabled: true
-      hostname: localhost
-      port: 8500
+
+spring.cloud.loadbalancer:
+  health-check:
+    repeat-health-check: true
+    refetch-instance: true
+    retry:
+      enabled: true
+      maxRetriesOnSameServiceInstance: 5
 
 logging:
   level:
@@ -35,7 +41,8 @@ logging:
 spring.cloud.gateway:
   routes:
     - id: postservice
-      uri: ${postservice.url:http://localhost:8081}
+      # uri: ${postservice.url:http://localhost:8081}
+      uri: lb://post-service
       predicates:
         - Path=/postservice/**
       filters:

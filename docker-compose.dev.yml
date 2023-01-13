@@ -24,6 +24,8 @@ services:
         -Dspring.cloud.consul.host=consul_container
     depends_on:
       - consul
+    extra_hosts:
+      - "local-post-service:host-gateway"
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
