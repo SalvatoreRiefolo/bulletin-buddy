@@ -51,6 +51,15 @@ export class DetailPageComponent implements OnInit {
   sort_func(event: string){
     this.sort_option = event;
     console.log(this.sort_option);
+    // TODO no = default = ascending
+    if (this.sort_option.toString()=='ASC' || this.sort_option.toString()== 'NO') {
+      console.log("Sorting by date in ascending order");
+      this.comments.sort((one, two) => (one.timestamp > two.timestamp ? 1 : -1));
+    }
+    else if (this.sort_option.toString()=='DESC') {
+      console.log("Sorting by date in descending order");
+      this.comments.sort((one, two) => (one.timestamp > two.timestamp ? -1 : 1));
+    }
   }
   ngOnInit(): void {
   }
