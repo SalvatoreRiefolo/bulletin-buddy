@@ -79,7 +79,6 @@ services:
       - apps
       - db
 
-
   bulletin-buddy-client-service:
     image: ase/bulletin-client-service
     build: bulletin-buddy-client-service
