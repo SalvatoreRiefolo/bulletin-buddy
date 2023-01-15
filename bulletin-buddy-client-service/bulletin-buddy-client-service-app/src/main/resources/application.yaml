@@ -5,3 +5,6 @@ server:
 
 spring.application:
   name: clientservice
+
+endpoint:
+  comment: http://localhost:8083/comments

@@ -28,18 +28,12 @@ public class CommentService {
     }
 
     public CommentDTO[] getCommentsByPostId(@PathVariable("id") UUID postId) throws RestClientException {
-        ArrayList<CommentDTO> commentDTOS = new ArrayList<>();
-        commentDTOS.add(CommentDTO.builder()
-                .commentId(UUID.randomUUID())
-                .content("content")
-                .posterEmail("email")
-                .postId(postId)
-                .timestamp(new Date()).build());
-        return commentDTOS.toArray(new CommentDTO[0]);
-        // return restTemplate.getForObject(commentEndpointUrl + "/" + postId, CommentDTO[].class);
+        //TODO: some exception handling
+         return restTemplate.getForObject(commentEndpointUrl + "/" + postId, CommentDTO[].class);
     }
 
-    public void addComment(CommentDTO e) {
-        // restTemplate.postForEntity(commentEndpointUrl, e, CommentDTO.class);
+    public void addComment(CommentDTO e) throws RestClientException {
+        //TODO: some exception handling
+        restTemplate.postForEntity(commentEndpointUrl, e, CommentDTO.class);
     }
 }
