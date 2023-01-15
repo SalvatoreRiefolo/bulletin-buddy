@@ -39,8 +39,8 @@ public class Comment {
         this.timestamp = new Date();
     }
 
-    public Comment(UUID commentId, UUID postId, String content, String posterEmail, Date timestamp) {
-        this.commentId = commentId;
+    public Comment(UUID postId, String content, String posterEmail, Date timestamp) {
+        this.commentId = UUID.randomUUID();
         this.postId = postId;
         this.content = content;
         this.posterEmail = posterEmail;

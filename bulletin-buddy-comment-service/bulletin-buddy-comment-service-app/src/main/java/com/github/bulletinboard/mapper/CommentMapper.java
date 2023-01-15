@@ -17,8 +17,7 @@ public class CommentMapper {
     }
 
     public Comment map(CommentDTO commentDTO) {
-        return new Comment(commentDTO.getCommentId(), commentDTO.getPostId(),
-                commentDTO.getContent(), commentDTO.getPosterEmail(), commentDTO.getTimestamp());
+        return new Comment(commentDTO.getPostId(), commentDTO.getContent(), commentDTO.getPosterEmail(), commentDTO.getTimestamp());
     }
 
 }
