@@ -12,7 +12,7 @@ describe('RegisterPageComponent', () => {
   let validEmail: string = "valid@email.com";
   class MockAuthenticationService {
     validateEmail(email: string) {
-      if(email === validEmail)
+      if (email === validEmail)
         return of(true);
       else
         return of(false);
@@ -20,13 +20,14 @@ describe('RegisterPageComponent', () => {
   }
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterPageComponent ],
+      declarations: [RegisterPageComponent],
       imports: [ReactiveFormsModule, HttpClientTestingModule],
-      providers:[
-      { provide: AuthenticationService, useClass: MockAuthenticationService },
+      providers: [
+        { provide: AuthenticationService, useClass: MockAuthenticationService },
 
-    ]})
-    .compileComponents();
+      ]
+    })
+      .compileComponents();
 
     fixture = TestBed.createComponent(RegisterPageComponent);
     component = fixture.componentInstance;
