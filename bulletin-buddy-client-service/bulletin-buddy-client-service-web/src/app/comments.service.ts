@@ -7,11 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CommentsService {
 
-  private commentServiceUrl = "/commentservice/"
+  // private commentServiceUrl = "/commentservice/"
 
   constructor(private http: HttpClient) { }
   getComments(id: string) {
-    return this.http.get<PostComment[]>(this.commentServiceUrl + 'comments/' + id);
+    // return this.http.get<PostComment[]>(this.commentServiceUrl + 'comments/' + id);
+    return this.http.get<PostComment[]>('comments/' + id);
   }
   addComment(comment: PostComment) {
     const headers = new HttpHeaders({
@@ -21,7 +22,8 @@ export class CommentsService {
     const options = {
       headers
     };
-    return this.http.post<PostComment>(this.commentServiceUrl + 'comments', comment, options);
+    // return this.http.post<PostComment>(this.commentServiceUrl + 'comments', comment, options);
+    return this.http.post<PostComment>('comments', comment, options);
 
   }
 }
