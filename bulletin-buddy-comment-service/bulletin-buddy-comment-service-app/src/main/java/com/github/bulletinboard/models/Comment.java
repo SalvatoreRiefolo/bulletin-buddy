@@ -39,6 +39,14 @@ public class Comment {
         this.timestamp = new Date();
     }
 
+    public Comment(UUID commentId, UUID postId, String content, String posterEmail, Date timestamp) {
+        this.commentId = commentId;
+        this.postId = postId;
+        this.content = content;
+        this.posterEmail = posterEmail;
+        this.timestamp = timestamp;
+    }
+
     public String getContent() {
         return content;
     }

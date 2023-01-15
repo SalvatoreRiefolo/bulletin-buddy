@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bulletin-buddy-gateway" />
-        <module name="bulletin-buddy-comment-service" />
+        <module name="bulletin-buddy-comment-service-api" />
         <module name="bulletin-buddy-authentication-service" />
         <module name="bulletin-buddy-client-service-app" />
         <module name="bulletin-buddy-client-service-web" />
+        <module name="bulletin-buddy-comment-service-app" />
         <module name="bulletin-buddy-post-service" />
       </profile>
     </annotationProcessing>
@@ -23,7 +24,9 @@
       <module name="bulletin-buddy-client-service" options="" />
       <module name="bulletin-buddy-client-service-app" options="-parameters" />
       <module name="bulletin-buddy-client-service-web" options="-parameters" />
-      <module name="bulletin-buddy-comment-service" options="-parameters" />
+      <module name="bulletin-buddy-comment-service" options="" />
+      <module name="bulletin-buddy-comment-service-api" options="-parameters" />
+      <module name="bulletin-buddy-comment-service-app" options="-parameters" />
       <module name="bulletin-buddy-gateway" options="-parameters" />
       <module name="bulletin-buddy-post-service" options="-parameters" />
     </option>

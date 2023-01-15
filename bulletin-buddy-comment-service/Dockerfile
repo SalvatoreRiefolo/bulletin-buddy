@@ -8,7 +8,7 @@ RUN mvn package
 FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
-COPY --from=maven /app/target/comment-service.jar /app/spring-boot.jar
+COPY --from=maven /app/bulletin-buddy-comment-service-app/target/comment-service.jar /app/spring-boot.jar
 EXPOSE 8082
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]
