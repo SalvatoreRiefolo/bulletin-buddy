@@ -7,4 +7,4 @@ spring.application:
   name: clientservice
 
 endpoint:
-  comment: http://localhost:8083/comments
+  comment: http://${COMMENT_SERVICE_HOST:localhost}:${COMMENT_SERVICE_PORT:8083}/comments
