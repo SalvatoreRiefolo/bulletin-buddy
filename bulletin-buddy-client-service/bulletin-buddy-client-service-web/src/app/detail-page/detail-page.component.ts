@@ -27,7 +27,7 @@ export class DetailPageComponent implements OnInit {
     this.post = new Post();
     this.comments = [];
     this.id = this.route.snapshot.params['id'];
-    this.sort_option = "NO";
+    this.sort_option = "ASC";
     this.postsService.getPost(this.id).subscribe((data: Post) => {
       this.post = data;
     });
@@ -51,8 +51,7 @@ export class DetailPageComponent implements OnInit {
   sort_func(event: string){
     this.sort_option = event;
     console.log(this.sort_option);
-    // TODO no = default = ascending
-    if (this.sort_option.toString()=='ASC' || this.sort_option.toString()== 'NO') {
+    if (this.sort_option.toString()=='ASC') {
       console.log("Sorting by date in ascending order");
       this.comments.sort((one, two) => (one.timestamp > two.timestamp ? 1 : -1));
     }

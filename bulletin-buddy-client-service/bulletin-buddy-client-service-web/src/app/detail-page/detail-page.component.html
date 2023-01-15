@@ -22,24 +22,18 @@
       <div class="row vert-line-div"></div>
       <div class="form-outline mb-4">
         <label class="form-label-sort" for="sort">Sort comments</label>
-        <!-- TODO bei posts dann different labels-->
         <select id="sort" (ngModelChange)="sort_func($event)" name="sort" class="form-control-sort"
                 [(ngModel)]="sort_option">
-          <option value="NO">Default sorting</option>
-          <!-- TODO default = ascending so maybe remove default-->
-          <!-- TODO think of improving this 1) labels 2) formatting -->
+          <!--<option value="NO">Default sorting</option>-->
           <option value="ASC">Oldest posts first</option>
           <option value="DESC">Latest posts first</option>
-          <!--<option value="ALPHA">Sort by user alphabetical</option>-->
         </select>
       </div>
     </div>
     <div class="row mt-5">
       <div class="col-2"></div>
-      <!-- try order -->
       <div class="col-8">
-        <!-- TODO don't sort in template, it will kill performance according to stackoverlfow-->
-        <div *ngFor="let item of comments"> <!--| orderBy: item.timeStamp">-->
+        <div *ngFor="let item of comments">
           <div class="row text-center text-white bg-secondary mt-1">
             <div>{{item.content}}</div>
             <div>{{item.timestamp.toLocaleString()}}</div>
