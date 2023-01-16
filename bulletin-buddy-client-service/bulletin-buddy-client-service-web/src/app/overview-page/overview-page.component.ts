@@ -10,29 +10,29 @@ import { PostsService } from '../posts.service';
 })
 export class OverviewPageComponent implements OnInit {
   public posts: Post[] = [];
-  public filtered_posts: Post[] = [];
+  public filteredPosts: Post[] = [];
 
   public postTypes = Object.values(PostType).filter(value => typeof value !== 'number');
 
-  public filter_option: string = "ALL";
+  public filterOption: string = "ALL";
 
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService) {
     this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
       this.posts = data;
-      this.filtered_posts = data;
+      this.filteredPosts = data;
     });
   }
 
   filter_change(event: string){
-    this.filter_option = event;
-    console.log(this.filter_option);
-    if (this.filter_option == 'ALL')
+    this.filterOption = event;
+    console.log(this.filterOption);
+    if (this.filterOption == 'ALL')
     {
-      this.filtered_posts = this.posts;
+      this.filteredPosts = this.posts;
     }
     else
     {
-      this.filtered_posts = this.posts.filter(value => value.type.toString() == this.filter_option);
+      this.filteredPosts = this.posts.filter(value => value.type.toString() == this.filterOption);
     }
   }
 

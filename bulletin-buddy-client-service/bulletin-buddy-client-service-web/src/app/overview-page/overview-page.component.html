@@ -4,7 +4,7 @@
     <div class="row vert-line-div"></div>
     <div class="form-outline mb-4">
       <label class="form-label" for="postType">Select filter option</label>
-      <select id="postType" (ngModelChange)="filter_change($event)" name="filter" class="form-control" [(ngModel)]="filter_option">
+      <select id="postType" (ngModelChange)="filter_change($event)" name="filter" class="form-control" [(ngModel)]="filterOption">
         <option value="ALL">Show ALL</option>
         <option *ngFor="let type of postTypes" value="{{type}}">
           Show {{type}}S
@@ -16,7 +16,7 @@
 
 <div class="container mt-5">
   <div class="container mx-5">
-    <div class="row mr-5" *ngFor="let item of filtered_posts">
+    <div class="row mr-5" *ngFor="let item of filteredPosts">
         <a routerLink="/post/{{item.id}}" class="text-decoration-none">
           <div class="col-10 text-white post">
             <h3>{{item.title}}</h3>
