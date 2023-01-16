@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github</groupId>
         <artifactId>bulletin-buddy-client-service</artifactId>
-        <version>0.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>bulletin-buddy-client-service-web</artifactId>
