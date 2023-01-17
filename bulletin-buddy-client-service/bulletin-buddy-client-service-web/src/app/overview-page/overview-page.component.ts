@@ -23,7 +23,7 @@ export class OverviewPageComponent implements OnInit {
     });
   }
 
-  filter_change(event: string){
+  filter(event: string){
     this.filterOption = event;
     console.log(this.filterOption);
     if (this.filterOption == 'ALL')
