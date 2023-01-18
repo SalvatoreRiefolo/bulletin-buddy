@@ -11,10 +11,18 @@ import { PostsService } from '../posts.service';
 export class OverviewPageComponent implements OnInit {
   public posts: Post[] = [];
 
+  public onlyOwnEntries: boolean = false;
+
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService) {
     this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
       this.posts = data;
     });
+  }
+
+  filterOwnEntries(event: boolean){
+    this.onlyOwnEntries = event;
+    console.log(this.onlyOwnEntries);
+    // this.filteredPosts = this.posts.filter(value => value.type.toString() == this.filterOption);
   }
 
   ngOnInit(): void {
