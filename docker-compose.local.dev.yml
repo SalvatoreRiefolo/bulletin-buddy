@@ -17,7 +17,7 @@ services:
         -Dpostservice.url=http://localhost:8081
         -Dauthenticationservice.url=http://localhost:8082
         -Dcommentservice.url=http://localhost:8083
-        -Dclientservice.url=http://localhost:8085
+        -Dclientservice.url=http://localhost:4200
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
