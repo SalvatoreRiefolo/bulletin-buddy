@@ -17,7 +17,7 @@ export class DetailPageComponent implements OnInit {
   public commentInput: string;
   private id: string;
 
-  public sort_option: string;
+  public sortOption: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class DetailPageComponent implements OnInit {
     this.post = new Post();
     this.comments = [];
     this.id = this.route.snapshot.params['id'];
-    this.sort_option = "ASC";
+    this.sortOption = "ASC";
     this.postsService.getPost(this.id).subscribe((data: Post) => {
       this.post = data;
     });
@@ -48,14 +48,14 @@ export class DetailPageComponent implements OnInit {
     this.commentsService.addComment(comment).subscribe(c => this.comments.push(comment));
   }
 
-  sort_func(event: string){
-    this.sort_option = event;
-    console.log(this.sort_option);
-    if (this.sort_option.toString()=='ASC') {
+  sort(event: string){
+    this.sortOption = event;
+    console.log(this.sortOption);
+    if (this.sortOption.toString()=='ASC') {
       console.log("Sorting by date in ascending order");
       this.comments.sort((one, two) => (one.timestamp > two.timestamp ? 1 : -1));
     }
-    else if (this.sort_option.toString()=='DESC') {
+    else if (this.sortOption.toString()=='DESC') {
       console.log("Sorting by date in descending order");
       this.comments.sort((one, two) => (one.timestamp > two.timestamp ? -1 : 1));
     }
