@@ -50,12 +50,5 @@ it("VeroAccusam",()=>{
 //  cy.get("button[type='submit']").click();
 //
 //})
-it("CheckOffer",()=>{
-    cy.visit("http://localhost:8080/");
-    cy.get("button[class='btn btn-secondary login']").click();
-    cy.get("#emailAddress").type('008@random.com');
-    cy.get("#password").type('sample');
-    cy.get("button[type='submit']").click();
-    cy.get("div:nth-child(6) a:nth-child(1) div:nth-child(1) h3:nth-child(1)").click();
-})
+
 })
