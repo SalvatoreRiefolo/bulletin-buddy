@@ -21,10 +21,10 @@
     <div class="container mt-5">
       <div class="row vert-line-div"></div>
       <div class="form-outline mb-4">
-        <label class="form-label" for="sortOption">Sort comments</label>
+        <label class="form-label" for="sortOption">Sort by:</label>
         <select id="sortOption" (ngModelChange)="sort($event)" name="filter" class="form-control" [(ngModel)]="sortOption">
-          <option value="ASC">Oldest first</option>
-          <option value="DESC">Latest first</option>
+          <option value="ASC">Oldest comment</option>
+          <option value="DESC">Most recent comment</option>
         </select>
       </div>
     </div>
