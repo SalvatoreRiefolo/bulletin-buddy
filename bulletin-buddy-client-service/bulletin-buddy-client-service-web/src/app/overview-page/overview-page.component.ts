@@ -4,7 +4,7 @@ import {Post, PostType} from '../post.model';
 import { PostsService } from '../posts.service';
 import {PostComment} from "../post-comment.model";
 import {CommentsService} from "../comments.service";
-import {map, Observable} from "rxjs";
+import {map, Observable, take} from "rxjs";
 
 @Component({
   selector: 'app-overview-page',
@@ -44,53 +44,36 @@ export class OverviewPageComponent implements OnInit {
   sort(event: string){
     this.sortOption = event;
     // TODO method for: sort posts according to comment count (the one with the most comments first)
-    // TODO improve maybe the getCount function
-    function getCount(comments: Observable<PostComment[]>): number {
-      console.log("in get count");
+    const getCommentCount = (id: string): number => {
       let count: number = 0;
-      /*comments.pipe(map((result: string | any[]) => {let count = result.length;
-        console.log(result.length+"test")}))*/
-      comments.subscribe((data: PostComment[]) => {
+      // TODO take 1 to get first value
+      this.commentsService.getComments(id).pipe(take(1)).subscribe((data: PostComment[]) => {
+        /*data.map( data: PostComment[]) => {
+        }*/
         count = data.length;
-        console.log(data.length);
         console.log(count);
         return data.length;
       });
 
-        //x => {count = x.length; console.log(x.length)});
-      //console.log("HELLO");
-      //console.log(count);
       return count;
     }
 
-    const getCommentsArray = (id: string): PostComment[] => {
-      let comments: PostComment[] = [];
-      this.commentsService.getComments(id).subscribe((data: PostComment[]) => {
-        comments = data;
-      });
-      console.log(id);
-      console.log(comments.length);
-      return comments;
-    }
-
-    console.log(this.sortOption);
-
     if (this.sortOption == "DESC"){
       console.log("in desc");
+      //console.log(getCommentCount(this.posts[0].id));
+      //console.log(getCommentCount(this.posts[1].id));
 
-      /*this.filteredPosts = this.filteredPosts.sort((one, two) =>
-        (getCount(this.commentsService.getComments(one.id)) > getCount(this.commentsService.getComments(two.id))
-          ? -1 : 1));*/
+
       this.filteredPosts = this.filteredPosts.sort((one, two) =>
-        (getCommentsArray(one.id).length > getCommentsArray(two.id).length)
+        (getCommentCount(one.id) > getCommentCount(two.id))
           ? -1 : 1);
     }
     else
     {
       console.log("Default value");
+      // TODO filter as then posts is used and therefore initial sorting is applied
       this.filter(this.filterOption);
     }
-
   }
 
   ngOnInit(): void {
