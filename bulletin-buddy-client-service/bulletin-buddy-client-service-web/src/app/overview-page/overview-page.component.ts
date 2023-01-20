@@ -18,17 +18,26 @@ export class OverviewPageComponent implements OnInit {
 
   public onlyOwnEntries: boolean = false;
 
+  public authenticatedEmail: string = "";
+
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService) {
     this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
       this.posts = data;
       this.filteredPosts = data;
     });
+    this.authenticatedEmail = this.authenticationService.getUserEmail();
   }
 
   filterOwnEntries(event: boolean) {
     this.onlyOwnEntries = event;
     console.log(this.onlyOwnEntries);
-    // this.filteredPosts = this.posts.filter(value => value.type.toString() == this.filterOption);
+    if (this.onlyOwnEntries) {
+      this.filteredPosts = this.filteredPosts.filter(value => value.publisherEmail == this.authenticatedEmail);
+    }
+    else{
+      // TODO unklick = reset to before
+      this.filter(this.filterOption);
+    }
   }
 
   filter(event: string){
