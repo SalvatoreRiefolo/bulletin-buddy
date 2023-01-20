@@ -3,6 +3,14 @@ version: '3'
 networks:
   apps:
     driver: bridge
+  db:
+    driver: bridge
+
+volumes:
+  pg-data:
+  pgadmin-data:
+  consul_config_data:
+  consul_data:
 
 services:
 
@@ -37,13 +45,20 @@ services:
         JAVA_TOOL_OPTIONS=
         -Dspring.cloud.consul.host=consul_container
         -Dspring.cloud.consul.port=8500
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=root
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_JPA_HIBERNATE_DDL=false
     ports:
       - "8081:8081"
     restart: on-failure
     depends_on:
       - consul
+      - db
     networks:
       - apps
+      - db
 
   bulletin-buddy-authentication-service:
     image: ase/bulletin-authentication-service
@@ -64,8 +79,17 @@ services:
     ports:
       - "8083:8083"
     restart: on-failure
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL=false
     networks:
       - apps
+      - db
 
   bulletin-buddy-client-service:
     image: ase/bulletin-client-service
@@ -93,7 +117,37 @@ services:
     extra_hosts:
       - "local-post-service:host-gateway"
 
+  db:
+    image: postgres
+    container_name: postgres_container
+    restart: always
+    ports:
+      - "5433:5433"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres_db
+      PGDATA: /var/lib/postgresql/data
+    expose:
+      - "5433"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+    command: -p 5433
+    networks:
+      - db
 
-volumes:
-  consul_config_data:
-  consul_data:
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - db

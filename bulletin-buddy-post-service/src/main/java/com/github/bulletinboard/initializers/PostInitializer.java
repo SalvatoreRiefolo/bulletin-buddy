@@ -46,9 +46,9 @@ public class PostInitializer implements InitializingBean {
         p4.setPublisherEmail("claudia.tester@test.com");
         p4.setType(Post.PostType.OFFER);
 
-        postService.addPost(p1);
-        postService.addPost(p2);
-        postService.addPost(p3);
-        postService.addPost(p4);
+        // postService.addPost(p1);
+        // postService.addPost(p2);
+        // postService.addPost(p3);
+        // postService.addPost(p4);
     }
 }
