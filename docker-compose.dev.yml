@@ -45,11 +45,11 @@ services:
         JAVA_TOOL_OPTIONS=
         -Dspring.cloud.consul.host=consul_container
         -Dspring.cloud.consul.port=8500
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
-        - SPRING_DATASOURCE_USERNAME=root
-        - SPRING_DATASOURCE_PASSWORD=root
-        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-        - SPRING_JPA_HIBERNATE_DDL=false
+        -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
+        -Dspring.datasource.username=root
+        -Dspring.datasource.password=root
+        -Dspring.jpa.hibernate.ddl.auto=update
+        -Dspring.jpa.hibernate.ddl=false
     ports:
       - "8081:8081"
     restart: on-failure

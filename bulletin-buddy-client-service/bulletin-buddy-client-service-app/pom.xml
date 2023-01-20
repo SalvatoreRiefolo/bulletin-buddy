@@ -18,7 +18,6 @@
     </properties>
 
     <dependencies>
-        <!-- SPRING BOOT WEBFLUX -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
