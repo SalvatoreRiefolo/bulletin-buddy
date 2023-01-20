@@ -7,11 +7,9 @@ import { Post } from './post.model';
 })
 export class PostsService {
 
-  body: string;
   postServiceUrl = "/postservice/"
 
   constructor(private http: HttpClient) {
-    this.body = "Cras mattis justo ac posuere pellentesque. Vestibulum sed semper felis. Integer at leo congue, dignissim lacus ut, consectetur lectus.";
   }
 
   getTopPosts() {

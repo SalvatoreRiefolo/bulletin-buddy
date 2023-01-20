@@ -7,30 +7,40 @@
         <input name="onlyOwnEntries"  (ngModelChange)="filterOwnEntries($event)" id="onlyOwnEntries" class="form-control"
                type="checkbox" [(ngModel)]="onlyOwnEntries">
       </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="postType">Select filter option</label>
+      <select id="postType" (ngModelChange)="filter($event)" name="filter" class="form-control" [(ngModel)]="filterOption">
+        <option value="ALL">Show ALL</option>
+        <option *ngFor="let type of postTypes" value="{{type}}">
+          Show {{type}}S
+        </option>
+      </select>
     </div>
+  </div>
 </div>
-<div class="container mt-5">
-    <div class="container mx-5">
-        <div class="row mr-5" *ngFor="let item of posts">
-            <a routerLink="/post/{{item.id}}" class="text-decoration-none">
-                <div class="col-10 text-white post">
 
-                    <h3>{{item.title}}</h3>
-                    <p>{{item.publisherEmail}}</p>
-                </div>
-            </a>
-            <div class="col-2"></div>
-        </div>
+<div class="container mt-5">
+  <div class="container mx-5">
+    <div class="row mr-5" *ngFor="let item of filteredPosts">
+        <a routerLink="/post/{{item.id}}" class="text-decoration-none">
+          <div class="col-10 text-white post">
+            <h3>{{item.title}}</h3>
+            <p>{{item.publisherEmail}}</p>
+          </div>
+        </a>
+        <div class="col-2"></div>
     </div>
+  </div>
 </div>
+
 <div class="container mt-5" *ngIf="(authenticationService.isLoggedIn())">
-    <div class="container mx-5">
-        <div class="row">
-            <div class="col-3">
-                <a routerLink="/add" class="text-decoration-none">
-                    <button class="btn btn-secondary">Add Offer</button>
-                </a>
-            </div>
-        </div>
+  <div class="container mx-5">
+    <div class="row">
+      <div class="col-3">
+        <a routerLink="/add" class="text-decoration-none">
+          <button class="btn btn-secondary">Add Offer</button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>
