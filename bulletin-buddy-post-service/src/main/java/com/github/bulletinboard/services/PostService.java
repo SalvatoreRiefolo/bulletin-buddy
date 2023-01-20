@@ -24,6 +24,9 @@ public class PostService {
     }
 
     public void addPost(Post post) {
+        if (post.getId() == null) {
+            post.setId(UUID.randomUUID());
+        }
         postRepository.saveAndFlush(post);
     }
 
