@@ -62,7 +62,7 @@ services:
       - db
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 2
 
   bulletin-buddy-authentication-service:
     image: ase/bulletin-authentication-service
@@ -78,22 +78,30 @@ services:
   bulletin-buddy-comment-service:
     image: ase/bulletin-comment-service
     build: bulletin-buddy-comment-service
-    container_name: comment-service
+    # container_name: comment-service
     hostname: commentservice
-    ports:
-      - "8083:8083"
+#    ports:
+#      - "8083:8083"
     restart: on-failure
     depends_on:
       - db
+      - consul
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_HIBERNATE_DDL=false
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
+        -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
+        -Dspring.datasource.username=root
+        -Dspring.datasource.password=root
+        -Dspring.jpa.hibernate.ddl.auto=update
+        -Dspring.jpa.hibernate.ddl=false
     networks:
       - apps
       - db
+    deploy:
+      mode: replicated
+      replicas: 2
 
   bulletin-buddy-client-service:
     image: ase/bulletin-client-service
