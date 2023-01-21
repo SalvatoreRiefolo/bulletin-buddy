@@ -30,7 +30,7 @@ export class OverviewPageComponent implements OnInit {
 
   filterOwnEntries(event: boolean) {
     this.onlyOwnEntries = event;
-    console.log(this.onlyOwnEntries);
+    //console.log(this.onlyOwnEntries);
     if (this.onlyOwnEntries) {
       this.filteredPosts = this.filteredPosts.filter(value => value.publisherEmail == this.authenticatedEmail);
     }

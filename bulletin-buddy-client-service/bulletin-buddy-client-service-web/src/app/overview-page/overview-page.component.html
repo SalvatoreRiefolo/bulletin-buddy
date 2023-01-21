@@ -2,10 +2,10 @@
     <h1 class="display-3 text-center">OVERVIEW</h1>
     <div class="container mt-5 px-5">
         <div class="row vert-line-div"></div>
-      <input name="checkbox" type="checkbox" [(ngModel)]="onlyOwnEntries" (ngModelChange)="filterOwnEntries($event)" />
-        <!--<label class="form-label" for="onlyOwnEntries">Only own entries</label>-->
-      <!--<input name="onlyOwnEntries" [(ngModel)]="onlyOwnEntries" type="checkbox" (ngModelChange)="filterOwnEntries($event)"
-             class="form-control"/>-->
+      <input name="checkbox" type="checkbox" [(ngModel)]="onlyOwnEntries" (ngModelChange)="filterOwnEntries($event)"
+             class="form-control-checkbox" />
+      <label class="form-label-checkbox">Only own entries</label>
+      <br>
     <div class="form-outline mb-4">
       <label class="form-label" for="postType">Select filter option</label>
       <select id="postType" (ngModelChange)="filter($event)" name="filter" class="form-control" [(ngModel)]="filterOption">
