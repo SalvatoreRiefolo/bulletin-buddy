@@ -118,13 +118,23 @@ services:
   bulletin-buddy-client-service:
     image: ase/bulletin-client-service
     build: bulletin-buddy-client-service
-    container_name: client-service
+    # container_name: client-service
     hostname: clientservice
-    ports:
-      - "8085:8085"
+#    ports:
+#      - "8085:8085"
     restart: on-failure
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
     networks:
       - apps
+    depends_on:
+      - consul
+    deploy:
+      mode: replicated
+      replicas: 2
 
   consul:
     image: consul:1.9.5
