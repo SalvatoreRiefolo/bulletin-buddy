@@ -65,14 +65,16 @@ spring.cloud.gateway:
         - RewritePath=/commentservice/(?<path>.*), /$\{path}
 
     - id: clientservice
-      uri: ${clientservice.url:http://localhost:8085}
+      # uri: ${clientservice.url:http://localhost:8085}
+      uri: lb://client-service
       predicates:
         - Path=/clientservice/**
       filters:
         - RewritePath=/clientservice/(?<path>.*), /$\{path}
 
     - id: default
-      uri: ${clientservice.url:http://localhost:8085}
+      # uri: ${clientservice.url:http://localhost:8085}
+      uri: lb://client-service
       predicates:
         - Path=/**
       filters:
