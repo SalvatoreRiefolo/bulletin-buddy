@@ -36,6 +36,7 @@ services:
       - "local-post-service:host-gateway"
       - "local-comment-service:host-gateway"
       - "local-authentication-service:host-gateway"
+      - "local-client-service:host-gateway"
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
@@ -141,6 +142,7 @@ services:
       - "local-post-service:host-gateway"
       - "local-comment-service:host-gateway"
       - "local-authentication-service:host-gateway"
+      - "local-client-service:host-gateway"
 
   db:
     image: postgres
