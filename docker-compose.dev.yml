@@ -38,7 +38,7 @@ services:
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
     build: bulletin-buddy-post-service
-    container_name: post-service
+    # container_name: post-service
     hostname: postservice
     environment:
       - |
@@ -50,8 +50,8 @@ services:
         -Dspring.datasource.password=root
         -Dspring.jpa.hibernate.ddl.auto=update
         -Dspring.jpa.hibernate.ddl=false
-    ports:
-      - "8081:8081"
+#    ports:
+#      - "8081:8081"
     restart: on-failure
     depends_on:
       - consul
@@ -59,6 +59,9 @@ services:
     networks:
       - apps
       - db
+    deploy:
+      mode: replicated
+      replicas: 3
 
   bulletin-buddy-authentication-service:
     image: ase/bulletin-authentication-service
