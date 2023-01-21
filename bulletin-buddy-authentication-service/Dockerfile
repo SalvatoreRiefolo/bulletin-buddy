@@ -9,6 +9,6 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 COPY --from=maven /app/target/authentication-service.jar /app/spring-boot.jar
-EXPOSE 8083
+# EXPOSE 8083
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]
