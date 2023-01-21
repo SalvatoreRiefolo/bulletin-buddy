@@ -35,6 +35,7 @@ services:
     extra_hosts:
       - "local-post-service:host-gateway"
       - "local-comment-service:host-gateway"
+      - "local-authentication-service:host-gateway"
 
   bulletin-buddy-post-service:
     image: ase/bulletin-post-service
@@ -129,6 +130,7 @@ services:
     extra_hosts:
       - "local-post-service:host-gateway"
       - "local-comment-service:host-gateway"
+      - "local-authentication-service:host-gateway"
 
   db:
     image: postgres
