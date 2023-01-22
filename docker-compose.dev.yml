@@ -85,7 +85,7 @@ services:
       - apps
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
 
   bulletin-buddy-comment-service:
     image: ase/bulletin-comment-service
@@ -134,7 +134,7 @@ services:
       - consul
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
 
   consul:
     image: consul:1.9.5
