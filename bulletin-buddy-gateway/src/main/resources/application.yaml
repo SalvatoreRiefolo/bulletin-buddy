@@ -41,7 +41,6 @@ logging:
 spring.cloud.gateway:
   routes:
     - id: postservice
-      # uri: ${postservice.url:http://localhost:8081}
       uri: lb://post-service
       predicates:
         - Path=/postservice/**
@@ -49,7 +48,6 @@ spring.cloud.gateway:
         - RewritePath=/postservice/(?<path>.*), /$\{path}
 
     - id: authenticationservice
-      # uri: ${authenticationservice.url:http://localhost:8082}
       uri: lb://authentication-service
       predicates:
         - Path=/authenticationservice/**
@@ -57,7 +55,6 @@ spring.cloud.gateway:
         - RewritePath=/authenticationservice/(?<path>.*), /$\{path}
 
     - id: commentservice
-      # uri: ${commentservice.url:http://localhost:8083}
       uri: lb://comment-service
       predicates:
         - Path=/commentservice/**
@@ -65,7 +62,6 @@ spring.cloud.gateway:
         - RewritePath=/commentservice/(?<path>.*), /$\{path}
 
     - id: clientservice
-      # uri: ${clientservice.url:http://localhost:8085}
       uri: lb://client-service
       predicates:
         - Path=/clientservice/**
@@ -73,7 +69,6 @@ spring.cloud.gateway:
         - RewritePath=/clientservice/(?<path>.*), /$\{path}
 
     - id: default
-      # uri: ${clientservice.url:http://localhost:8085}
       uri: lb://client-service
       predicates:
         - Path=/**
