@@ -40,6 +40,7 @@ it("VeroAccusam",()=>{
     cy.get("button[type='submit']").click();
     cy.get("div:nth-child(4) a:nth-child(1) div:nth-child(1) h3:nth-child(1)").click();
 
+
 })
 //it("AddOffer",()=>{
 //
