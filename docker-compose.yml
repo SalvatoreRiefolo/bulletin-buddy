@@ -17,7 +17,7 @@ volumes:
 services:
 
   gateway:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:0.1.0
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-gateway:1.1.0
     container_name: gateway
     networks:
       - apps
@@ -31,7 +31,7 @@ services:
       - consul
 
   bulletin-buddy-post-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:0.1.0
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:1.1.0
     hostname: postservice
     environment:
       - |
@@ -55,7 +55,7 @@ services:
       replicas: 2
 
   bulletin-buddy-authentication-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:0.1.0
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:1.1.0
     hostname: authenticationservice
     restart: on-failure
     depends_on:
@@ -72,7 +72,7 @@ services:
       replicas: 1
 
   bulletin-buddy-comment-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:0.1.0
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:1.1.0
     hostname: commentservice
     restart: on-failure
     depends_on:
@@ -96,7 +96,7 @@ services:
       replicas: 2
 
   bulletin-buddy-client-service:
-    image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:0.1.0
+    image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:1.1.0
     hostname: clientservice
     restart: on-failure
     environment:
