@@ -21,20 +21,23 @@ export class OverviewPageComponent implements OnInit {
   public authenticatedEmail: string = "";
 
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService) {
+    this.authenticatedEmail = this.authenticationService.getUserEmail();
+
     this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
       this.posts = data;
       this.filteredPosts = data;
     });
-    this.authenticatedEmail = this.authenticationService.getUserEmail();
   }
 
   filterOwnEntries(event: boolean) {
     this.onlyOwnEntries = event;
-    //console.log(this.onlyOwnEntries);
+
     if (this.onlyOwnEntries) {
-      this.filteredPosts = this.filteredPosts.filter(value => value.publisherEmail == this.authenticatedEmail);
-    }
-    else{
+      this.filteredPosts = this.filteredPosts.filter(value =>
+      {
+        return value.publisherEmail == this.authenticatedEmail;
+      });
+    } else {
       // TODO unklick = reset to before
       this.filter(this.filterOption);
     }
