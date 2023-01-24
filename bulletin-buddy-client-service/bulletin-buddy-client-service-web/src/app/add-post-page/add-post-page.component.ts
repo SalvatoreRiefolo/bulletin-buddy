@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Post, PostType, PostType2LabelMapping } from "../post.model";
 import { PostsService } from '../posts.service';
 import { AuthenticationService } from '../authentication.service';
-import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-post-offer-page',
@@ -27,7 +26,6 @@ export class AddPostPageComponent implements OnInit {
   submit() {
     console.log(this.postType);
     let p: Post = {
-      id: uuid.v4(),
       title: this.title,
       body: this.body,
       publisherEmail: this.authService.getUserEmail(),
