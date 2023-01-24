@@ -11,6 +11,8 @@ volumes:
     driver: local
   pg-data:
   pgadmin-data:
+  consul_config_data:
+  consul_data:
 
 services:
 
@@ -24,68 +26,104 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dpostservice.url=http://postservice:8081
-        -Dauthenticationservice.url=http://authenticationservice:8082
-        -Dcommentservice.url=http://commentservice:8083
-        -Dclientservice.url=http://clientservice:8085
+        -Dspring.cloud.consul.host=consul_container
+    depends_on:
+      - consul
 
   bulletin-buddy-post-service:
     image: ghcr.io/salvatoreriefolo/bulletin-buddy-post-service:0.1.0
-    container_name: post-service
     hostname: postservice
-    ports:
-      - "8081:8081"
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
+        -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
+        -Dspring.datasource.username=root
+        -Dspring.datasource.password=root
+        -Dspring.jpa.hibernate.ddl.auto=update
+        -Dspring.jpa.hibernate.ddl=false
     restart: on-failure
     depends_on:
+      - consul
       - db
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_HIBERNATE_DDL=false
     networks:
       - apps
       - db
+    deploy:
+      mode: replicated
+      replicas: 2
 
   bulletin-buddy-authentication-service:
     image: ghcr.io/salvatoreriefolo/bulletin-buddy-authentication-service:0.1.0
-    container_name: authentication-service
     hostname: authenticationservice
-    ports:
-      - "8082:8082"
     restart: on-failure
+    depends_on:
+      - consul
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
     networks:
       - apps
+    deploy:
+      mode: replicated
+      replicas: 1
 
   bulletin-buddy-comment-service:
     image: ghcr.io/salvatoreriefolo/bulletin-buddy-comment-service:0.1.0
-    container_name: comment-service
     hostname: commentservice
-    ports:
-      - "8083:8083"
     restart: on-failure
     depends_on:
       - db
+      - consul
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/postgres_db
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_HIBERNATE_DDL=false
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
+        -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
+        -Dspring.datasource.username=root
+        -Dspring.datasource.password=root
+        -Dspring.jpa.hibernate.ddl.auto=update
+        -Dspring.jpa.hibernate.ddl=false
     networks:
       - apps
       - db
+    deploy:
+      mode: replicated
+      replicas: 2
 
   bulletin-buddy-client-service:
     image: ghcr.io/salvatoreriefolo/bulletin-buddy-client-service:0.1.0
-    container_name: client-service
     hostname: clientservice
-    ports:
-      - "8085:8085"
     restart: on-failure
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.port=8500
     networks:
       - apps
+    depends_on:
+      - consul
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  consul:
+    image: consul:1.9.5
+    container_name: consul_container
+    hostname: consul_container
+    ports:
+      - '8500:8500'
+    networks:
+      - apps
+    volumes:
+      - consul_config_data:/consul/config
+      - consul_data:/consul/data
+    command: agent -server -dev -ui -ui-content-path=/devops/consul/ui -bootstrap-expect=1 -data-dir=/consul/data -config-dir=/consul/data -client=0.0.0.0
 
   db:
     image: postgres
