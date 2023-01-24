@@ -46,7 +46,8 @@ export class OverviewPageComponent implements OnInit {
     if (this.sortOption == "DESC"){
       let comments: PostComment[][] = [];
       for (const post of this.filteredPosts) {
-        this.commentsService.getComments(post.id).subscribe((commentsArray: PostComment[])=>
+        let id: string = <string>post.id;
+        this.commentsService.getComments(id).subscribe((commentsArray: PostComment[])=>
           {
             comments.push(commentsArray)
             if(comments.length == this.filteredPosts.length){
