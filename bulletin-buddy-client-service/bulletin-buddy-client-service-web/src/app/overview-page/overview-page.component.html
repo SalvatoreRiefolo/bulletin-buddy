@@ -5,8 +5,8 @@
     <div class="form-outline mb-4">
       <label class="form-label" for="postType">Select filter option</label>
       <select id="postType" (ngModelChange)="filter($event)" name="filter" class="form-control" [(ngModel)]="filterOption">
-        <option value="ALL">Show ALL</option>
-        <option *ngFor="let type of postTypes" value="{{type}}">
+        <option class="form-options" value="ALL">Show ALL</option>
+        <option class="form-options" *ngFor="let type of postTypes" value="{{type}}">
           Show {{type}}S
         </option>
       </select>
