@@ -5,6 +5,7 @@ import { Post, PostType } from '../post.model';
 import { PostsService } from '../posts.service';
 
 import { OverviewPageComponent } from './overview-page.component';
+import {By} from "@angular/platform-browser";
 
 describe('OverviewPageComponent', () => {
   let component: OverviewPageComponent;
@@ -51,5 +52,39 @@ describe('OverviewPageComponent', () => {
     expect(component.posts[0]["publisherEmail"]).toEqual('my@email.com');
     expect(component.posts[0]["type"]).toEqual(PostType.OFFER);
   });
+
+  it('check for presence of all options of select', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options'));
+    expect(elementOptions.length).toEqual(3);
+  });
+
+  it('check if clicking option REQUEST at select works', () => {
+    const elementOptions = fixture.debugElement.query(By.css('.form-options'));
+    expect(elementOptions.nativeElement.value).toEqual('ALL');
+  });
+
+  it('check if clicking option REQUEST at select works', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options'));
+    elementOptions[2].nativeElement.click();
+    fixture.detectChanges();
+    expect(elementOptions.nativeElement.value).toEqual('REQUEST');
+  });
+
+  /*it('check if clicking option OFFER at select works', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options'));
+    elementOptions[1].nativeElement.click();
+    fixture.detectChanges();
+    expect(elementOptions.nativeElement.value).toEqual('OFFER');
+  });
+
+  it('check if clicking option OFFER and afterwards ALL at select works', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options'));
+    elementOptions[1].nativeElement.click();
+    fixture.detectChanges();
+    //expect(elementOptions.value).toEqual('OFFER');
+    elementOptions[0].nativeElement.click();
+    fixture.detectChanges();
+    expect(elementOptions.nativeElement.value).toEqual('ALL');
+  });*/
 
 });
