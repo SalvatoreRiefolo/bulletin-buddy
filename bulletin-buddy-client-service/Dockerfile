@@ -9,6 +9,6 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 COPY --from=maven /app/bulletin-buddy-client-service-app/target/client-service-app.jar /app/spring-boot.jar
-EXPOSE 8085
+# EXPOSE 8085
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]

@@ -7,6 +7,7 @@ import { Post, PostType } from '../post.model';
 import { PostsService } from '../posts.service';
 import { DetailPageComponent } from './detail-page.component';
 import { CommentsService } from '../comments.service';
+import {By} from "@angular/platform-browser";
 
 describe('DetailPageComponent', () => {
   let component: DetailPageComponent;
@@ -72,5 +73,22 @@ describe('DetailPageComponent', () => {
 
   it('should return array of length 1', () => {
     expect(component.comments.length).toEqual(1);
+  });
+
+  it('should check for presence of all options of select', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    expect(elementOptions.length).toEqual(2);
+  });
+
+  it('should check values of select for correctness', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    expect(elementOptions[0].nativeElement.value).toEqual('ASC');
+    expect(elementOptions[1].nativeElement.value).toEqual('DESC');
+  });
+
+  it('should click on the second value of the dropdown', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    fixture.detectChanges();
+    elementOptions[1].nativeElement.click();
   });
 });
