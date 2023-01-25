@@ -9,6 +9,6 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 COPY --from=maven /app/target/comment-service.jar /app/spring-boot.jar
-EXPOSE 8082
+# EXPOSE 8082
 
 ENTRYPOINT ["java","-jar","spring-boot.jar"]

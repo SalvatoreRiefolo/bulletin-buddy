@@ -1,7 +1,26 @@
 server:
-  port: 8085
+  port: 0
   ssl:
     enabled: false
 
 spring.application:
-  name: clientservice
+  name: client-service
+
+management.endpoints:
+  web:
+    exposure:
+      base-path: /actuator
+
+management.endpoint:
+  health:
+    show-details: always
+
+
+spring.cloud.compatibility-verifier.enabled: false
+
+spring.cloud.consul.config.enabled: false
+spring.cloud.consul.discovery.hostname: ${HOSTNAME:local-${spring.application.name}}
+
+spring..cloud.consul.discovery.instanceId: ${spring.application.name}-${random.uuid}
+
+logging.level.org.springframework.cloud.consul: DEBUG
