@@ -23,8 +23,8 @@
       <div class="form-outline mb-4">
         <label class="form-label" for="sortOption">Sort by:</label>
         <select id="sortOption" (ngModelChange)="sort($event)" name="filter" class="form-control" [(ngModel)]="sortOption">
-          <option class="form-options-sort" value="ASC">Oldest comment</option>
-          <option class="form-options-sort" value="DESC">Most recent comment</option>
+          <option class="form-options-sort" value="ASC">Oldest first</option>
+          <option class="form-options-sort" value="DESC">Newest first</option>
         </select>
       </div>
     </div>
