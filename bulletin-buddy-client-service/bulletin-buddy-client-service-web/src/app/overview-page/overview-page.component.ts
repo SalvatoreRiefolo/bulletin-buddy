@@ -17,8 +17,8 @@ export class OverviewPageComponent implements OnInit {
 
   public postTypes = Object.values(PostType).filter(value => typeof value !== 'number');
 
-  public filterOption: string = "ALL";
-  public sortOption: string = "DEFAULT";
+  public filterOption: string;
+  public sortOption: string;
 
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService,
               private commentsService: CommentsService) {
@@ -26,6 +26,8 @@ export class OverviewPageComponent implements OnInit {
       this.posts = data;
       this.filteredPosts = data;
     });
+    this.filterOption = "ALL";
+    this.sortOption = "DEFAULT";
   }
 
   filter(event: string){
