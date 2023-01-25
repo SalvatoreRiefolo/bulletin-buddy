@@ -1,0 +1,78 @@
+version: '3'
+
+volumes:
+  pg-data:
+  pgadmin-data:
+
+services:
+
+  gateway:
+    image: ase/bulletin-gateway
+    build: bulletin-buddy-gateway
+    container_name: gateway
+    network_mode: "host"
+    environment:
+      - |
+        JAVA_TOOL_OPTIONS=
+        -Dpostservice.url=http://localhost:8081
+        -Dauthenticationservice.url=http://localhost:8082
+        -Dcommentservice.url=http://localhost:8083
+        -Dclientservice.url=http://localhost:4200
+
+  bulletin-buddy-post-service:
+    image: ase/bulletin-post-service
+    build: bulletin-buddy-post-service
+    container_name: post-service
+    network_mode: "host"
+    hostname: postservice
+    restart: on-failure
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/postgres_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL=false
+
+  bulletin-buddy-authentication-service:
+    image: ase/bulletin-authentication-service
+    build: bulletin-buddy-authentication-service
+    container_name: authentication-service
+    network_mode: "host"
+    hostname: authenticationservice
+    restart: on-failure
+
+  bulletin-buddy-comment-service:
+    image: ase/bulletin-comment-service
+    build: bulletin-buddy-comment-service
+    container_name: comment-service
+    hostname: commentservice
+    network_mode: "host"
+    restart: on-failure
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/postgres_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL=false
+
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres_db
+      PGDATA: /var/lib/postgresql/data
+    expose:
+      - "5433"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+    command: -p 5433
+    network_mode: "host"
