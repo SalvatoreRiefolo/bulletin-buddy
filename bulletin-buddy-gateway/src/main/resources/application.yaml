@@ -1,6 +1,33 @@
 server:
   port: 8080
 
+spring.application:
+  name: gateway
+
+spring.cloud.service-registry:
+  auto-registration:
+    enabled: false
+
+spring.cloud.config:
+  enabled: false
+
+spring.cloud:
+  compatibility-verifier:
+    enabled: false
+  consul:
+    config:
+      enabled: false
+    discovery:
+      enabled: true
+
+spring.cloud.loadbalancer:
+  health-check:
+    repeat-health-check: true
+    refetch-instance: true
+    retry:
+      enabled: true
+      maxRetriesOnSameServiceInstance: 5
+
 logging:
   level:
     root: INFO
@@ -14,35 +41,35 @@ logging:
 spring.cloud.gateway:
   routes:
     - id: postservice
-      uri: ${postservice.url:http://localhost:8081}
+      uri: lb://post-service
       predicates:
         - Path=/postservice/**
       filters:
         - RewritePath=/postservice/(?<path>.*), /$\{path}
 
     - id: authenticationservice
-      uri: ${authenticationservice.url:http://localhost:8082}
+      uri: lb://authentication-service
       predicates:
         - Path=/authenticationservice/**
       filters:
         - RewritePath=/authenticationservice/(?<path>.*), /$\{path}
 
     - id: commentservice
-      uri: ${commentservice.url:http://localhost:8083}
+      uri: lb://comment-service
       predicates:
         - Path=/commentservice/**
       filters:
         - RewritePath=/commentservice/(?<path>.*), /$\{path}
 
     - id: clientservice
-      uri: ${clientservice.url:http://localhost:8085}
+      uri: lb://client-service
       predicates:
         - Path=/clientservice/**
       filters:
         - RewritePath=/clientservice/(?<path>.*), /$\{path}
 
     - id: default
-      uri: ${clientservice.url:http://localhost:8085}
+      uri: lb://client-service
       predicates:
         - Path=/**
       filters:

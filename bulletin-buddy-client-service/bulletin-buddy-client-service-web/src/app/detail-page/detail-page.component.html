@@ -1,54 +1,63 @@
 <div class="container mt-5">
-    <h1 class="display-4 text-center">{{post.title}}</h1>
-    <div class="container mt-5 px-5">
-        <div class="row vert-line-div"></div>
-    </div>
+  <h1 class="display-4 text-center">{{post.title}}</h1>
+  <div class="container mt-5 px-5">
+    <div class="row vert-line-div"></div>
+  </div>
 </div>
 <div class="container mt-5">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <p>{{post.body}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <p>Contact: <b>{{post.publisherEmail}}</b></p>
-            </div>
-        </div>
-        <div class="container mt-5 px-5">
-            <div class="row vert-line-div"></div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <div *ngFor="let item of comments">
-                    <div class="row text-center text-white bg-secondary mt-1">
-                        <div>{{item.content}}</div>
-                        <div>{{item.timestamp.toLocaleString()}}</div>
-                        <div>{{item.posterEmail}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>{{post.body}}</p>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <p>Contact: <b>{{post.publisherEmail}}</b></p>
+      </div>
+    </div>
+    <div class="container mt-5">
+      <div class="row vert-line-div"></div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="sortOption">Sort by:</label>
+        <select id="sortOption" (ngModelChange)="sort($event)" name="filter" class="form-control" [(ngModel)]="sortOption">
+          <option class="form-options-sort" value="ASC">Oldest first</option>
+          <option class="form-options-sort" value="DESC">Newest first</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div *ngFor="let item of comments">
+          <div class="row text-center text-white bg-secondary mt-1">
+            <div>{{item.content}}</div>
+            <div>{{item.timestamp.toLocaleString()}}</div>
+            <div>{{item.posterEmail}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container mt-5" *ngIf="(authService.isLoggedIn())">
-    <div class="container mx-5">
-        <div class="row">
-            <div class="col-3">
-                <form #addCommentForm="ngForm">
-                    Add comment: <input name="comment" id="comment" class="form-control input-lg" type="text" placeholder="Enter comment"
-                        [(ngModel)]="commentInput">
-                    <button type="submit" class="btn btn-secondary mt-1" (click)="addComment()"
-                        [disabled]="addCommentForm.invalid">Add comment</button>
+  <div class="container mx-5">
+    <div class="row">
+      <div class="col-3">
+        <form #addCommentForm="ngForm">
+          Add comment: <input name="comment" id="comment" class="form-control input-lg" type="text"
+                              placeholder="Enter comment"
+                              [(ngModel)]="commentInput">
+          <button type="submit" class="btn btn-secondary mt-1" (click)="addComment()"
+                  [disabled]="addCommentForm.invalid">Add comment
+          </button>
 
-                </form>
+        </form>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="mb-5"></div>

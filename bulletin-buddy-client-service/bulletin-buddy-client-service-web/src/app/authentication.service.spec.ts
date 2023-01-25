@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs/internal/observable/of';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { AuthenticationService } from './authentication.service';
 
 describe('AuthenticationService', () => {
@@ -15,9 +17,15 @@ describe('AuthenticationService', () => {
       return of(true);
     }
   }
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes(
+         [{path: 'overview', component: OverviewPageComponent}]
+       )
+      ],
       providers: [
         { provide: HttpClient, useClass: MockHttpClient },
       ]
@@ -28,18 +36,21 @@ describe('AuthenticationService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
   it('should login', () => {
     let email: string = "my@email.com";
     service.login("password", email);
     expect(service.getUserEmail()).toEqual(email);
     expect(service.isLoggedIn()).toBeTruthy();
   });
+
   it('should logout', () => {
     let email: string = "";
     service.logout();
     expect(service.getUserEmail()).toEqual(email);
     expect(service.isLoggedIn()).toBeFalsy();
   });
+
   it('should register', () => {
     let email: string = "my@email.com";
     service.register(email, "password");

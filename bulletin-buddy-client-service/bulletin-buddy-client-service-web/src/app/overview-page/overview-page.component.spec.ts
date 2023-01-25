@@ -1,10 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import { of } from 'rxjs/internal/observable/of';
 import { Post, PostType } from '../post.model';
 import { PostsService } from '../posts.service';
 
 import { OverviewPageComponent } from './overview-page.component';
+import {By} from "@angular/platform-browser";
 
 describe('OverviewPageComponent', () => {
   let component: OverviewPageComponent;
@@ -51,5 +52,59 @@ describe('OverviewPageComponent', () => {
     expect(component.posts[0]["publisherEmail"]).toEqual('my@email.com');
     expect(component.posts[0]["type"]).toEqual(PostType.OFFER);
   });
+
+  it('should check whether checkbox is unchecked at initial state', fakeAsync(() => {
+    let checkbox = fixture.nativeElement.querySelector('input');
+    fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      expect(checkbox.checked).toBeFalse();
+    });
+  }));
+
+  it('should check whether click on checkbox works', fakeAsync(() => {
+    let checkbox = fixture.nativeElement.querySelector('input');
+    fixture.detectChanges();
+    checkbox.click();
+    fixture.whenStable().then(()=>{
+      expect(checkbox.checked).toBeTrue();
+    });
+  }));
+
+  it('should check for presence of all options of select', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    expect(elementOptions.length).toEqual(2);
+  });
+
+  it('should check if values of dropdown are in correct order', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    expect(elementOptions[0].nativeElement.value).toEqual('DESC');
+    expect(elementOptions[1].nativeElement.value).toEqual('DEFAULT');
+  });
+
+  it('should click on the second value of the dropdown', () => {
+    const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
+    fixture.detectChanges();
+    elementOptions[1].nativeElement.click();
+  });
+
+  /*
+  it('should check whether selection on dropdown triggers function call', fakeAsync(() => {
+    const elementOption = fixture.debugElement.query(By.css('.form-control sort'));
+    spyOn(component, 'sort').and.callThrough();
+    fixture.detectChanges();
+    expect(elementOption.nativeElement.value).toEqual('DESC');
+    elementOption.triggerEventHandler('sort', component);
+    expect(component.sort).toHaveBeenCalled();
+  }));
+
+  it('should check ', fakeAsync(() => {
+    const elementOption = fixture.debugElement.queryAll(By.css('.form-control sort'));
+    spyOn(component, 'sort').and.callThrough();
+    fixture.detectChanges();
+    expect(elementOption[0].nativeElement.value).toEqual('DESC');
+    elementOption[1].nativeElement.click().then(() => {
+      expect(component.sort).toHaveBeenCalled();
+    });
+  }));*/
 
 });
