@@ -10,6 +10,12 @@
           Show {{type}}S
         </option>
       </select>
+      <!--TODO make flexible (posts, offers, requests) -->
+      <label class="form-label" for="sortOption">Sort posts</label>
+      <select id="sortOption" (ngModelChange)="sort($event)" name="sort" class="form-control sort" [(ngModel)]="sortOption">
+        <option class="form-options-sort" value="DESC">Most comments first</option>
+        <option class="form-options-sort" value="DEFAULT">Default sorting</option>
+      </select>
     </div>
   </div>
 </div>
