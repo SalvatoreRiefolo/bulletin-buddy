@@ -20,6 +20,10 @@ export class OverviewPageComponent implements OnInit {
   public filterOption: string;
   public sortOption: string;
 
+  public onlyOwnEntries: boolean = false;
+
+  public authenticatedEmail: string = "";
+
   constructor(private postsService: PostsService, public authenticationService: AuthenticationService,
               private commentsService: CommentsService) {
     this.postsService.getOverviewPosts().subscribe((data: Post[]) => {
@@ -28,6 +32,21 @@ export class OverviewPageComponent implements OnInit {
     });
     this.filterOption = "ALL";
     this.sortOption = "DEFAULT";
+      this.authenticatedEmail = this.authenticationService.getUserEmail();
+  }
+
+  filterOwnEntries(event: boolean) {
+    this.onlyOwnEntries = event;
+
+    if (this.onlyOwnEntries) {
+      this.filteredPosts = this.filteredPosts.filter(value =>
+      {
+        return value.publisherEmail == this.authenticatedEmail;
+      });
+    } else {
+      // TODO unklick = reset to before
+      this.filter(this.filterOption);
+    }
   }
 
   filter(event: string){

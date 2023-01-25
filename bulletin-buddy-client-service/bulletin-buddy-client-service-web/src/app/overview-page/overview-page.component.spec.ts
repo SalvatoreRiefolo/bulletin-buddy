@@ -53,6 +53,23 @@ describe('OverviewPageComponent', () => {
     expect(component.posts[0]["type"]).toEqual(PostType.OFFER);
   });
 
+  it('should check whether checkbox is unchecked at initial state', fakeAsync(() => {
+    let checkbox = fixture.nativeElement.querySelector('input');
+    fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      expect(checkbox.checked).toBeFalse();
+    });
+  }));
+
+  it('should check whether click on checkbox works', fakeAsync(() => {
+    let checkbox = fixture.nativeElement.querySelector('input');
+    fixture.detectChanges();
+    checkbox.click();
+    fixture.whenStable().then(()=>{
+      expect(checkbox.checked).toBeTrue();
+    });
+  }));
+
   it('should check for presence of all options of select', () => {
     const elementOptions = fixture.debugElement.queryAll(By.css('.form-options-sort'));
     expect(elementOptions.length).toEqual(2);

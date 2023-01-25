@@ -12,6 +12,7 @@ export class LoginPageComponent implements OnInit {
   // later to be removed
   public password: string = 'test';
   public email: string = 'test@test.com';
+
   constructor(private authenticationService: AuthenticationService) { }
 
   login() {

@@ -1,16 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Router, Routes} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
 
   private authenticationServiceUrl = "/authenticationservice/"
   private loggedIn = false;
   private email = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(passwd: string, email: string) {
     return this.http.get<boolean>(this.authenticationServiceUrl + `authentication?name=${email}&passwd=${passwd}`)
@@ -19,8 +21,11 @@ export class AuthenticationService {
           this.loggedIn = true;
           this.email = email;
         }
+
+        this.router.navigate(['/overview']);
       });
   }
+
   register(email: string, password: string) {
     let user = {
       name: email,
@@ -42,16 +47,20 @@ export class AuthenticationService {
       });
 
   }
+
   isLoggedIn(): boolean {
     return this.loggedIn;
   }
+
   logout() {
     this.loggedIn = false;
     this.email = "";
   }
+
   getUserEmail(): string {
     return this.email;
   }
+
   validateEmail(email: string) {
     return this.http.get<boolean>(this.authenticationServiceUrl + `authentication/validate?name=${email}`);
   }
