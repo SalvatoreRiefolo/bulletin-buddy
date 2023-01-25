@@ -25,7 +25,7 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.host=consul
     depends_on:
       - consul
     extra_hosts:
@@ -41,7 +41,7 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.host=consul
         -Dspring.cloud.consul.port=8500
         -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
         -Dspring.datasource.username=root
@@ -69,7 +69,7 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.host=consul
         -Dspring.cloud.consul.port=8500
     networks:
       - apps
@@ -88,7 +88,7 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.host=consul
         -Dspring.cloud.consul.port=8500
         -Dspring.datasource.url=jdbc:postgresql://db:5433/postgres_db
         -Dspring.datasource.username=root
@@ -110,7 +110,7 @@ services:
     environment:
       - |
         JAVA_TOOL_OPTIONS=
-        -Dspring.cloud.consul.host=consul_container
+        -Dspring.cloud.consul.host=consul
         -Dspring.cloud.consul.port=8500
     networks:
       - apps
@@ -122,8 +122,8 @@ services:
 
   consul:
     image: consul:1.9.5
-    container_name: consul_container
-    hostname: consul_container
+    container_name: consul
+    hostname: consul
     ports:
       - '8500:8500'
     networks:
@@ -140,7 +140,7 @@ services:
 
   db:
     image: postgres
-    container_name: postgres_container
+    container_name: postgres
     restart: always
     ports:
       - "5433:5433"
@@ -161,7 +161,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin4_container
+    container_name: pgadmin4
     restart: always
     ports:
       - "5050:80"
