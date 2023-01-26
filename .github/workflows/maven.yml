@@ -37,7 +37,7 @@ jobs:
       uses: QAInsights/PerfAction@v3.1
       with:
         test-plan-path: ./perf-tests/bulletin-buddy-test-plan.jmx
-        args: "-Jhost=${{secrets.HOST_DEV}} -Jport=${{secrets.PORT_DEV}}"
+        args: "-Jaddress=${{secrets.HOST_DEV}} -Jport=${{secrets.PORT_DEV}}"
 
     - name: Upload Results
       uses: actions/upload-artifact@v2
