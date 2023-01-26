@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Build and test Java w/ Maven & JMeter
 
 
 on:
@@ -32,3 +32,16 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Run tests with Maven
       run: mvn test
+
+    - name: JMeter Test
+      uses: rbhadti94/apache-jmeter-action@v0.6.0
+      with:
+        testFilePath: ./perf-tests/bulletin-buddy-test-plan.jmx
+        outputReportsFolder: reports/
+        args: "-Jaddress=${{secrets.HOST_DEV}} -Jport=${{secrets.PORT_DEV}}"
+
+    - name: Upload Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: jmeter-results
+        path: reports/
